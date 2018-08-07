@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingBooksMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.TeamshoppingBooks" >
+    <id column="ts_books_id" property="tsBooksId" jdbcType="INTEGER" />
+    <result column="ts_books_name" property="tsBooksName" jdbcType="VARCHAR" />
+    <result column="ts_books_type" property="tsBooksType" jdbcType="VARCHAR" />
+    <result column="ts_books_author" property="tsBooksAuthor" jdbcType="VARCHAR" />
+    <result column="ts_books_press" property="tsBooksPress" jdbcType="VARCHAR" />
+    <result column="ts_books_picture" property="tsBooksPicture" jdbcType="VARCHAR" />
+    <result column="ts_books_number" property="tsBooksNumber" jdbcType="INTEGER" />
+    <result column="ts_books_money" property="tsBooksMoney" jdbcType="DOUBLE" />
+    <result column="ts_books_introduce" property="tsBooksIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_books_state" property="tsBooksState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ts_books_id, ts_books_name, ts_books_type, ts_books_author, ts_books_press, ts_books_picture, 
+    ts_books_number, ts_books_money, ts_books_introduce, ts_books_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.TeamshoppingBooksExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teamshopping_books
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teamshopping_books
+    where ts_books_id = #{tsBooksId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teamshopping_books
+    where ts_books_id = #{tsBooksId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.TeamshoppingBooksExample" >
+    delete from teamshopping_books
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.TeamshoppingBooks" >
+    insert into teamshopping_books (ts_books_id, ts_books_name, ts_books_type, 
+      ts_books_author, ts_books_press, ts_books_picture, 
+      ts_books_number, ts_books_money, ts_books_introduce, 
+      ts_books_state)
+    values (#{tsBooksId,jdbcType=INTEGER}, #{tsBooksName,jdbcType=VARCHAR}, #{tsBooksType,jdbcType=VARCHAR}, 
+      #{tsBooksAuthor,jdbcType=VARCHAR}, #{tsBooksPress,jdbcType=VARCHAR}, #{tsBooksPicture,jdbcType=VARCHAR}, 
+      #{tsBooksNumber,jdbcType=INTEGER}, #{tsBooksMoney,jdbcType=DOUBLE}, #{tsBooksIntroduce,jdbcType=VARCHAR}, 
+      #{tsBooksState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.TeamshoppingBooks" >
+    insert into teamshopping_books
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsBooksId != null" >
+        ts_books_id,
+      </if>
+      <if test="tsBooksName != null" >
+        ts_books_name,
+      </if>
+      <if test="tsBooksType != null" >
+        ts_books_type,
+      </if>
+      <if test="tsBooksAuthor != null" >
+        ts_books_author,
+      </if>
+      <if test="tsBooksPress != null" >
+        ts_books_press,
+      </if>
+      <if test="tsBooksPicture != null" >
+        ts_books_picture,
+      </if>
+      <if test="tsBooksNumber != null" >
+        ts_books_number,
+      </if>
+      <if test="tsBooksMoney != null" >
+        ts_books_money,
+      </if>
+      <if test="tsBooksIntroduce != null" >
+        ts_books_introduce,
+      </if>
+      <if test="tsBooksState != null" >
+        ts_books_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsBooksId != null" >
+        #{tsBooksId,jdbcType=INTEGER},
+      </if>
+      <if test="tsBooksName != null" >
+        #{tsBooksName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksType != null" >
+        #{tsBooksType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksAuthor != null" >
+        #{tsBooksAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksPress != null" >
+        #{tsBooksPress,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksPicture != null" >
+        #{tsBooksPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksNumber != null" >
+        #{tsBooksNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsBooksMoney != null" >
+        #{tsBooksMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsBooksIntroduce != null" >
+        #{tsBooksIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksState != null" >
+        #{tsBooksState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.TeamshoppingBooksExample" resultType="java.lang.Integer" >
+    select count(*) from teamshopping_books
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teamshopping_books
+    <set >
+      <if test="record.tsBooksId != null" >
+        ts_books_id = #{record.tsBooksId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsBooksName != null" >
+        ts_books_name = #{record.tsBooksName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsBooksType != null" >
+        ts_books_type = #{record.tsBooksType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsBooksAuthor != null" >
+        ts_books_author = #{record.tsBooksAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsBooksPress != null" >
+        ts_books_press = #{record.tsBooksPress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsBooksPicture != null" >
+        ts_books_picture = #{record.tsBooksPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsBooksNumber != null" >
+        ts_books_number = #{record.tsBooksNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsBooksMoney != null" >
+        ts_books_money = #{record.tsBooksMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.tsBooksIntroduce != null" >
+        ts_books_introduce = #{record.tsBooksIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsBooksState != null" >
+        ts_books_state = #{record.tsBooksState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teamshopping_books
+    set ts_books_id = #{record.tsBooksId,jdbcType=INTEGER},
+      ts_books_name = #{record.tsBooksName,jdbcType=VARCHAR},
+      ts_books_type = #{record.tsBooksType,jdbcType=VARCHAR},
+      ts_books_author = #{record.tsBooksAuthor,jdbcType=VARCHAR},
+      ts_books_press = #{record.tsBooksPress,jdbcType=VARCHAR},
+      ts_books_picture = #{record.tsBooksPicture,jdbcType=VARCHAR},
+      ts_books_number = #{record.tsBooksNumber,jdbcType=INTEGER},
+      ts_books_money = #{record.tsBooksMoney,jdbcType=DOUBLE},
+      ts_books_introduce = #{record.tsBooksIntroduce,jdbcType=VARCHAR},
+      ts_books_state = #{record.tsBooksState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.TeamshoppingBooks" >
+    update teamshopping_books
+    <set >
+      <if test="tsBooksName != null" >
+        ts_books_name = #{tsBooksName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksType != null" >
+        ts_books_type = #{tsBooksType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksAuthor != null" >
+        ts_books_author = #{tsBooksAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksPress != null" >
+        ts_books_press = #{tsBooksPress,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksPicture != null" >
+        ts_books_picture = #{tsBooksPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksNumber != null" >
+        ts_books_number = #{tsBooksNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsBooksMoney != null" >
+        ts_books_money = #{tsBooksMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsBooksIntroduce != null" >
+        ts_books_introduce = #{tsBooksIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsBooksState != null" >
+        ts_books_state = #{tsBooksState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ts_books_id = #{tsBooksId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.TeamshoppingBooks" >
+    update teamshopping_books
+    set ts_books_name = #{tsBooksName,jdbcType=VARCHAR},
+      ts_books_type = #{tsBooksType,jdbcType=VARCHAR},
+      ts_books_author = #{tsBooksAuthor,jdbcType=VARCHAR},
+      ts_books_press = #{tsBooksPress,jdbcType=VARCHAR},
+      ts_books_picture = #{tsBooksPicture,jdbcType=VARCHAR},
+      ts_books_number = #{tsBooksNumber,jdbcType=INTEGER},
+      ts_books_money = #{tsBooksMoney,jdbcType=DOUBLE},
+      ts_books_introduce = #{tsBooksIntroduce,jdbcType=VARCHAR},
+      ts_books_state = #{tsBooksState,jdbcType=VARCHAR}
+    where ts_books_id = #{tsBooksId,jdbcType=INTEGER}
+  </update>
+</mapper>

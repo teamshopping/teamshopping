@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingFinefoodMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.TeamshoppingFinefood" >
+    <id column="ts_finefood_id" property="tsFinefoodId" jdbcType="INTEGER" />
+    <result column="ts_finefood_name" property="tsFinefoodName" jdbcType="VARCHAR" />
+    <result column="ts_finefood_seller" property="tsFinefoodSeller" jdbcType="VARCHAR" />
+    <result column="ts_finefood_material" property="tsFinefoodMaterial" jdbcType="VARCHAR" />
+    <result column="ts_finefood_weight" property="tsFinefoodWeight" jdbcType="VARCHAR" />
+    <result column="ts_finefood_flavor" property="tsFinefoodFlavor" jdbcType="VARCHAR" />
+    <result column="ts_finefood_picture" property="tsFinefoodPicture" jdbcType="VARCHAR" />
+    <result column="ts_finefood_number" property="tsFinefoodNumber" jdbcType="INTEGER" />
+    <result column="ts_finefood_money" property="tsFinefoodMoney" jdbcType="DOUBLE" />
+    <result column="ts_finefood_introduce" property="tsFinefoodIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_finefood_state" property="tsFinefoodState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ts_finefood_id, ts_finefood_name, ts_finefood_seller, ts_finefood_material, ts_finefood_weight, 
+    ts_finefood_flavor, ts_finefood_picture, ts_finefood_number, ts_finefood_money, ts_finefood_introduce, 
+    ts_finefood_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.TeamshoppingFinefoodExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teamshopping_finefood
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teamshopping_finefood
+    where ts_finefood_id = #{tsFinefoodId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teamshopping_finefood
+    where ts_finefood_id = #{tsFinefoodId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.TeamshoppingFinefoodExample" >
+    delete from teamshopping_finefood
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.TeamshoppingFinefood" >
+    insert into teamshopping_finefood (ts_finefood_id, ts_finefood_name, ts_finefood_seller, 
+      ts_finefood_material, ts_finefood_weight, ts_finefood_flavor, 
+      ts_finefood_picture, ts_finefood_number, ts_finefood_money, 
+      ts_finefood_introduce, ts_finefood_state)
+    values (#{tsFinefoodId,jdbcType=INTEGER}, #{tsFinefoodName,jdbcType=VARCHAR}, #{tsFinefoodSeller,jdbcType=VARCHAR}, 
+      #{tsFinefoodMaterial,jdbcType=VARCHAR}, #{tsFinefoodWeight,jdbcType=VARCHAR}, #{tsFinefoodFlavor,jdbcType=VARCHAR}, 
+      #{tsFinefoodPicture,jdbcType=VARCHAR}, #{tsFinefoodNumber,jdbcType=INTEGER}, #{tsFinefoodMoney,jdbcType=DOUBLE}, 
+      #{tsFinefoodIntroduce,jdbcType=VARCHAR}, #{tsFinefoodState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.TeamshoppingFinefood" >
+    insert into teamshopping_finefood
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsFinefoodId != null" >
+        ts_finefood_id,
+      </if>
+      <if test="tsFinefoodName != null" >
+        ts_finefood_name,
+      </if>
+      <if test="tsFinefoodSeller != null" >
+        ts_finefood_seller,
+      </if>
+      <if test="tsFinefoodMaterial != null" >
+        ts_finefood_material,
+      </if>
+      <if test="tsFinefoodWeight != null" >
+        ts_finefood_weight,
+      </if>
+      <if test="tsFinefoodFlavor != null" >
+        ts_finefood_flavor,
+      </if>
+      <if test="tsFinefoodPicture != null" >
+        ts_finefood_picture,
+      </if>
+      <if test="tsFinefoodNumber != null" >
+        ts_finefood_number,
+      </if>
+      <if test="tsFinefoodMoney != null" >
+        ts_finefood_money,
+      </if>
+      <if test="tsFinefoodIntroduce != null" >
+        ts_finefood_introduce,
+      </if>
+      <if test="tsFinefoodState != null" >
+        ts_finefood_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsFinefoodId != null" >
+        #{tsFinefoodId,jdbcType=INTEGER},
+      </if>
+      <if test="tsFinefoodName != null" >
+        #{tsFinefoodName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodSeller != null" >
+        #{tsFinefoodSeller,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodMaterial != null" >
+        #{tsFinefoodMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodWeight != null" >
+        #{tsFinefoodWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodFlavor != null" >
+        #{tsFinefoodFlavor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodPicture != null" >
+        #{tsFinefoodPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodNumber != null" >
+        #{tsFinefoodNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsFinefoodMoney != null" >
+        #{tsFinefoodMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsFinefoodIntroduce != null" >
+        #{tsFinefoodIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodState != null" >
+        #{tsFinefoodState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.TeamshoppingFinefoodExample" resultType="java.lang.Integer" >
+    select count(*) from teamshopping_finefood
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teamshopping_finefood
+    <set >
+      <if test="record.tsFinefoodId != null" >
+        ts_finefood_id = #{record.tsFinefoodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsFinefoodName != null" >
+        ts_finefood_name = #{record.tsFinefoodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodSeller != null" >
+        ts_finefood_seller = #{record.tsFinefoodSeller,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodMaterial != null" >
+        ts_finefood_material = #{record.tsFinefoodMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodWeight != null" >
+        ts_finefood_weight = #{record.tsFinefoodWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodFlavor != null" >
+        ts_finefood_flavor = #{record.tsFinefoodFlavor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodPicture != null" >
+        ts_finefood_picture = #{record.tsFinefoodPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodNumber != null" >
+        ts_finefood_number = #{record.tsFinefoodNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsFinefoodMoney != null" >
+        ts_finefood_money = #{record.tsFinefoodMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.tsFinefoodIntroduce != null" >
+        ts_finefood_introduce = #{record.tsFinefoodIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFinefoodState != null" >
+        ts_finefood_state = #{record.tsFinefoodState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teamshopping_finefood
+    set ts_finefood_id = #{record.tsFinefoodId,jdbcType=INTEGER},
+      ts_finefood_name = #{record.tsFinefoodName,jdbcType=VARCHAR},
+      ts_finefood_seller = #{record.tsFinefoodSeller,jdbcType=VARCHAR},
+      ts_finefood_material = #{record.tsFinefoodMaterial,jdbcType=VARCHAR},
+      ts_finefood_weight = #{record.tsFinefoodWeight,jdbcType=VARCHAR},
+      ts_finefood_flavor = #{record.tsFinefoodFlavor,jdbcType=VARCHAR},
+      ts_finefood_picture = #{record.tsFinefoodPicture,jdbcType=VARCHAR},
+      ts_finefood_number = #{record.tsFinefoodNumber,jdbcType=INTEGER},
+      ts_finefood_money = #{record.tsFinefoodMoney,jdbcType=DOUBLE},
+      ts_finefood_introduce = #{record.tsFinefoodIntroduce,jdbcType=VARCHAR},
+      ts_finefood_state = #{record.tsFinefoodState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.TeamshoppingFinefood" >
+    update teamshopping_finefood
+    <set >
+      <if test="tsFinefoodName != null" >
+        ts_finefood_name = #{tsFinefoodName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodSeller != null" >
+        ts_finefood_seller = #{tsFinefoodSeller,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodMaterial != null" >
+        ts_finefood_material = #{tsFinefoodMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodWeight != null" >
+        ts_finefood_weight = #{tsFinefoodWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodFlavor != null" >
+        ts_finefood_flavor = #{tsFinefoodFlavor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodPicture != null" >
+        ts_finefood_picture = #{tsFinefoodPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodNumber != null" >
+        ts_finefood_number = #{tsFinefoodNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsFinefoodMoney != null" >
+        ts_finefood_money = #{tsFinefoodMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsFinefoodIntroduce != null" >
+        ts_finefood_introduce = #{tsFinefoodIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFinefoodState != null" >
+        ts_finefood_state = #{tsFinefoodState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ts_finefood_id = #{tsFinefoodId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.TeamshoppingFinefood" >
+    update teamshopping_finefood
+    set ts_finefood_name = #{tsFinefoodName,jdbcType=VARCHAR},
+      ts_finefood_seller = #{tsFinefoodSeller,jdbcType=VARCHAR},
+      ts_finefood_material = #{tsFinefoodMaterial,jdbcType=VARCHAR},
+      ts_finefood_weight = #{tsFinefoodWeight,jdbcType=VARCHAR},
+      ts_finefood_flavor = #{tsFinefoodFlavor,jdbcType=VARCHAR},
+      ts_finefood_picture = #{tsFinefoodPicture,jdbcType=VARCHAR},
+      ts_finefood_number = #{tsFinefoodNumber,jdbcType=INTEGER},
+      ts_finefood_money = #{tsFinefoodMoney,jdbcType=DOUBLE},
+      ts_finefood_introduce = #{tsFinefoodIntroduce,jdbcType=VARCHAR},
+      ts_finefood_state = #{tsFinefoodState,jdbcType=VARCHAR}
+    where ts_finefood_id = #{tsFinefoodId,jdbcType=INTEGER}
+  </update>
+</mapper>

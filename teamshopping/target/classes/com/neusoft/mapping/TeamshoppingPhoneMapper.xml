@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingPhoneMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.TeamshoppingPhone" >
+    <id column="ts_phone_id" property="tsPhoneId" jdbcType="INTEGER" />
+    <result column="ts_phone_brand" property="tsPhoneBrand" jdbcType="VARCHAR" />
+    <result column="ts_phone_model" property="tsPhoneModel" jdbcType="VARCHAR" />
+    <result column="ts_phone_type" property="tsPhoneType" jdbcType="VARCHAR" />
+    <result column="ts_phone_size" property="tsPhoneSize" jdbcType="VARCHAR" />
+    <result column="ts_phone_color" property="tsPhoneColor" jdbcType="VARCHAR" />
+    <result column="ts_phone_kernel" property="tsPhoneKernel" jdbcType="VARCHAR" />
+    <result column="ts_phone_audio" property="tsPhoneAudio" jdbcType="VARCHAR" />
+    <result column="ts_phone_memory" property="tsPhoneMemory" jdbcType="VARCHAR" />
+    <result column="ts_phone_pixel" property="tsPhonePixel" jdbcType="VARCHAR" />
+    <result column="ts_phone_guarantee" property="tsPhoneGuarantee" jdbcType="VARCHAR" />
+    <result column="ts_phone_system" property="tsPhoneSystem" jdbcType="VARCHAR" />
+    <result column="ts_phone_picture" property="tsPhonePicture" jdbcType="VARCHAR" />
+    <result column="ts_phone_number" property="tsPhoneNumber" jdbcType="INTEGER" />
+    <result column="ts_phone_money" property="tsPhoneMoney" jdbcType="DOUBLE" />
+    <result column="ts_phone_introduce" property="tsPhoneIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_phone_state" property="tsPhoneState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ts_phone_id, ts_phone_brand, ts_phone_model, ts_phone_type, ts_phone_size, ts_phone_color, 
+    ts_phone_kernel, ts_phone_audio, ts_phone_memory, ts_phone_pixel, ts_phone_guarantee, 
+    ts_phone_system, ts_phone_picture, ts_phone_number, ts_phone_money, ts_phone_introduce, 
+    ts_phone_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.TeamshoppingPhoneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teamshopping_phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teamshopping_phone
+    where ts_phone_id = #{tsPhoneId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teamshopping_phone
+    where ts_phone_id = #{tsPhoneId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.TeamshoppingPhoneExample" >
+    delete from teamshopping_phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.TeamshoppingPhone" >
+    insert into teamshopping_phone (ts_phone_id, ts_phone_brand, ts_phone_model, 
+      ts_phone_type, ts_phone_size, ts_phone_color, 
+      ts_phone_kernel, ts_phone_audio, ts_phone_memory, 
+      ts_phone_pixel, ts_phone_guarantee, ts_phone_system, 
+      ts_phone_picture, ts_phone_number, ts_phone_money, 
+      ts_phone_introduce, ts_phone_state)
+    values (#{tsPhoneId,jdbcType=INTEGER}, #{tsPhoneBrand,jdbcType=VARCHAR}, #{tsPhoneModel,jdbcType=VARCHAR}, 
+      #{tsPhoneType,jdbcType=VARCHAR}, #{tsPhoneSize,jdbcType=VARCHAR}, #{tsPhoneColor,jdbcType=VARCHAR}, 
+      #{tsPhoneKernel,jdbcType=VARCHAR}, #{tsPhoneAudio,jdbcType=VARCHAR}, #{tsPhoneMemory,jdbcType=VARCHAR}, 
+      #{tsPhonePixel,jdbcType=VARCHAR}, #{tsPhoneGuarantee,jdbcType=VARCHAR}, #{tsPhoneSystem,jdbcType=VARCHAR}, 
+      #{tsPhonePicture,jdbcType=VARCHAR}, #{tsPhoneNumber,jdbcType=INTEGER}, #{tsPhoneMoney,jdbcType=DOUBLE}, 
+      #{tsPhoneIntroduce,jdbcType=VARCHAR}, #{tsPhoneState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.TeamshoppingPhone" >
+    insert into teamshopping_phone
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsPhoneId != null" >
+        ts_phone_id,
+      </if>
+      <if test="tsPhoneBrand != null" >
+        ts_phone_brand,
+      </if>
+      <if test="tsPhoneModel != null" >
+        ts_phone_model,
+      </if>
+      <if test="tsPhoneType != null" >
+        ts_phone_type,
+      </if>
+      <if test="tsPhoneSize != null" >
+        ts_phone_size,
+      </if>
+      <if test="tsPhoneColor != null" >
+        ts_phone_color,
+      </if>
+      <if test="tsPhoneKernel != null" >
+        ts_phone_kernel,
+      </if>
+      <if test="tsPhoneAudio != null" >
+        ts_phone_audio,
+      </if>
+      <if test="tsPhoneMemory != null" >
+        ts_phone_memory,
+      </if>
+      <if test="tsPhonePixel != null" >
+        ts_phone_pixel,
+      </if>
+      <if test="tsPhoneGuarantee != null" >
+        ts_phone_guarantee,
+      </if>
+      <if test="tsPhoneSystem != null" >
+        ts_phone_system,
+      </if>
+      <if test="tsPhonePicture != null" >
+        ts_phone_picture,
+      </if>
+      <if test="tsPhoneNumber != null" >
+        ts_phone_number,
+      </if>
+      <if test="tsPhoneMoney != null" >
+        ts_phone_money,
+      </if>
+      <if test="tsPhoneIntroduce != null" >
+        ts_phone_introduce,
+      </if>
+      <if test="tsPhoneState != null" >
+        ts_phone_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsPhoneId != null" >
+        #{tsPhoneId,jdbcType=INTEGER},
+      </if>
+      <if test="tsPhoneBrand != null" >
+        #{tsPhoneBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneModel != null" >
+        #{tsPhoneModel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneType != null" >
+        #{tsPhoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneSize != null" >
+        #{tsPhoneSize,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneColor != null" >
+        #{tsPhoneColor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneKernel != null" >
+        #{tsPhoneKernel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneAudio != null" >
+        #{tsPhoneAudio,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneMemory != null" >
+        #{tsPhoneMemory,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhonePixel != null" >
+        #{tsPhonePixel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneGuarantee != null" >
+        #{tsPhoneGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneSystem != null" >
+        #{tsPhoneSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhonePicture != null" >
+        #{tsPhonePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneNumber != null" >
+        #{tsPhoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsPhoneMoney != null" >
+        #{tsPhoneMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsPhoneIntroduce != null" >
+        #{tsPhoneIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneState != null" >
+        #{tsPhoneState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.TeamshoppingPhoneExample" resultType="java.lang.Integer" >
+    select count(*) from teamshopping_phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teamshopping_phone
+    <set >
+      <if test="record.tsPhoneId != null" >
+        ts_phone_id = #{record.tsPhoneId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsPhoneBrand != null" >
+        ts_phone_brand = #{record.tsPhoneBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneModel != null" >
+        ts_phone_model = #{record.tsPhoneModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneType != null" >
+        ts_phone_type = #{record.tsPhoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneSize != null" >
+        ts_phone_size = #{record.tsPhoneSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneColor != null" >
+        ts_phone_color = #{record.tsPhoneColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneKernel != null" >
+        ts_phone_kernel = #{record.tsPhoneKernel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneAudio != null" >
+        ts_phone_audio = #{record.tsPhoneAudio,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneMemory != null" >
+        ts_phone_memory = #{record.tsPhoneMemory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhonePixel != null" >
+        ts_phone_pixel = #{record.tsPhonePixel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneGuarantee != null" >
+        ts_phone_guarantee = #{record.tsPhoneGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneSystem != null" >
+        ts_phone_system = #{record.tsPhoneSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhonePicture != null" >
+        ts_phone_picture = #{record.tsPhonePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneNumber != null" >
+        ts_phone_number = #{record.tsPhoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsPhoneMoney != null" >
+        ts_phone_money = #{record.tsPhoneMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.tsPhoneIntroduce != null" >
+        ts_phone_introduce = #{record.tsPhoneIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsPhoneState != null" >
+        ts_phone_state = #{record.tsPhoneState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teamshopping_phone
+    set ts_phone_id = #{record.tsPhoneId,jdbcType=INTEGER},
+      ts_phone_brand = #{record.tsPhoneBrand,jdbcType=VARCHAR},
+      ts_phone_model = #{record.tsPhoneModel,jdbcType=VARCHAR},
+      ts_phone_type = #{record.tsPhoneType,jdbcType=VARCHAR},
+      ts_phone_size = #{record.tsPhoneSize,jdbcType=VARCHAR},
+      ts_phone_color = #{record.tsPhoneColor,jdbcType=VARCHAR},
+      ts_phone_kernel = #{record.tsPhoneKernel,jdbcType=VARCHAR},
+      ts_phone_audio = #{record.tsPhoneAudio,jdbcType=VARCHAR},
+      ts_phone_memory = #{record.tsPhoneMemory,jdbcType=VARCHAR},
+      ts_phone_pixel = #{record.tsPhonePixel,jdbcType=VARCHAR},
+      ts_phone_guarantee = #{record.tsPhoneGuarantee,jdbcType=VARCHAR},
+      ts_phone_system = #{record.tsPhoneSystem,jdbcType=VARCHAR},
+      ts_phone_picture = #{record.tsPhonePicture,jdbcType=VARCHAR},
+      ts_phone_number = #{record.tsPhoneNumber,jdbcType=INTEGER},
+      ts_phone_money = #{record.tsPhoneMoney,jdbcType=DOUBLE},
+      ts_phone_introduce = #{record.tsPhoneIntroduce,jdbcType=VARCHAR},
+      ts_phone_state = #{record.tsPhoneState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.TeamshoppingPhone" >
+    update teamshopping_phone
+    <set >
+      <if test="tsPhoneBrand != null" >
+        ts_phone_brand = #{tsPhoneBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneModel != null" >
+        ts_phone_model = #{tsPhoneModel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneType != null" >
+        ts_phone_type = #{tsPhoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneSize != null" >
+        ts_phone_size = #{tsPhoneSize,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneColor != null" >
+        ts_phone_color = #{tsPhoneColor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneKernel != null" >
+        ts_phone_kernel = #{tsPhoneKernel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneAudio != null" >
+        ts_phone_audio = #{tsPhoneAudio,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneMemory != null" >
+        ts_phone_memory = #{tsPhoneMemory,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhonePixel != null" >
+        ts_phone_pixel = #{tsPhonePixel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneGuarantee != null" >
+        ts_phone_guarantee = #{tsPhoneGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneSystem != null" >
+        ts_phone_system = #{tsPhoneSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhonePicture != null" >
+        ts_phone_picture = #{tsPhonePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneNumber != null" >
+        ts_phone_number = #{tsPhoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsPhoneMoney != null" >
+        ts_phone_money = #{tsPhoneMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsPhoneIntroduce != null" >
+        ts_phone_introduce = #{tsPhoneIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsPhoneState != null" >
+        ts_phone_state = #{tsPhoneState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ts_phone_id = #{tsPhoneId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.TeamshoppingPhone" >
+    update teamshopping_phone
+    set ts_phone_brand = #{tsPhoneBrand,jdbcType=VARCHAR},
+      ts_phone_model = #{tsPhoneModel,jdbcType=VARCHAR},
+      ts_phone_type = #{tsPhoneType,jdbcType=VARCHAR},
+      ts_phone_size = #{tsPhoneSize,jdbcType=VARCHAR},
+      ts_phone_color = #{tsPhoneColor,jdbcType=VARCHAR},
+      ts_phone_kernel = #{tsPhoneKernel,jdbcType=VARCHAR},
+      ts_phone_audio = #{tsPhoneAudio,jdbcType=VARCHAR},
+      ts_phone_memory = #{tsPhoneMemory,jdbcType=VARCHAR},
+      ts_phone_pixel = #{tsPhonePixel,jdbcType=VARCHAR},
+      ts_phone_guarantee = #{tsPhoneGuarantee,jdbcType=VARCHAR},
+      ts_phone_system = #{tsPhoneSystem,jdbcType=VARCHAR},
+      ts_phone_picture = #{tsPhonePicture,jdbcType=VARCHAR},
+      ts_phone_number = #{tsPhoneNumber,jdbcType=INTEGER},
+      ts_phone_money = #{tsPhoneMoney,jdbcType=DOUBLE},
+      ts_phone_introduce = #{tsPhoneIntroduce,jdbcType=VARCHAR},
+      ts_phone_state = #{tsPhoneState,jdbcType=VARCHAR}
+    where ts_phone_id = #{tsPhoneId,jdbcType=INTEGER}
+  </update>
+</mapper>

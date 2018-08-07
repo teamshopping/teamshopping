@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingFreshMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.TeamshoppingFresh" >
+    <id column="ts_fresh_id" property="tsFreshId" jdbcType="INTEGER" />
+    <result column="ts_fresh_name" property="tsFreshName" jdbcType="VARCHAR" />
+    <result column="ts_fresh_brand" property="tsFreshBrand" jdbcType="VARCHAR" />
+    <result column="ts_fresh_amount" property="tsFreshAmount" jdbcType="VARCHAR" />
+    <result column="ts_fresh_picture" property="tsFreshPicture" jdbcType="VARCHAR" />
+    <result column="ts_fresh_land" property="tsFreshLand" jdbcType="VARCHAR" />
+    <result column="ts_fresh_time" property="tsFreshTime" jdbcType="VARCHAR" />
+    <result column="ts_fresh_mode" property="tsFreshMode" jdbcType="VARCHAR" />
+    <result column="ts_fresh_number" property="tsFreshNumber" jdbcType="INTEGER" />
+    <result column="ts_fresh_money" property="tsFreshMoney" jdbcType="DOUBLE" />
+    <result column="ts_fresh_introduce" property="tsFreshIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_fresh_state" property="tsFreshState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ts_fresh_id, ts_fresh_name, ts_fresh_brand, ts_fresh_amount, ts_fresh_picture, ts_fresh_land, 
+    ts_fresh_time, ts_fresh_mode, ts_fresh_number, ts_fresh_money, ts_fresh_introduce, 
+    ts_fresh_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.TeamshoppingFreshExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teamshopping_fresh
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teamshopping_fresh
+    where ts_fresh_id = #{tsFreshId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teamshopping_fresh
+    where ts_fresh_id = #{tsFreshId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.TeamshoppingFreshExample" >
+    delete from teamshopping_fresh
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.TeamshoppingFresh" >
+    insert into teamshopping_fresh (ts_fresh_id, ts_fresh_name, ts_fresh_brand, 
+      ts_fresh_amount, ts_fresh_picture, ts_fresh_land, 
+      ts_fresh_time, ts_fresh_mode, ts_fresh_number, 
+      ts_fresh_money, ts_fresh_introduce, ts_fresh_state
+      )
+    values (#{tsFreshId,jdbcType=INTEGER}, #{tsFreshName,jdbcType=VARCHAR}, #{tsFreshBrand,jdbcType=VARCHAR}, 
+      #{tsFreshAmount,jdbcType=VARCHAR}, #{tsFreshPicture,jdbcType=VARCHAR}, #{tsFreshLand,jdbcType=VARCHAR}, 
+      #{tsFreshTime,jdbcType=VARCHAR}, #{tsFreshMode,jdbcType=VARCHAR}, #{tsFreshNumber,jdbcType=INTEGER}, 
+      #{tsFreshMoney,jdbcType=DOUBLE}, #{tsFreshIntroduce,jdbcType=VARCHAR}, #{tsFreshState,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.TeamshoppingFresh" >
+    insert into teamshopping_fresh
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsFreshId != null" >
+        ts_fresh_id,
+      </if>
+      <if test="tsFreshName != null" >
+        ts_fresh_name,
+      </if>
+      <if test="tsFreshBrand != null" >
+        ts_fresh_brand,
+      </if>
+      <if test="tsFreshAmount != null" >
+        ts_fresh_amount,
+      </if>
+      <if test="tsFreshPicture != null" >
+        ts_fresh_picture,
+      </if>
+      <if test="tsFreshLand != null" >
+        ts_fresh_land,
+      </if>
+      <if test="tsFreshTime != null" >
+        ts_fresh_time,
+      </if>
+      <if test="tsFreshMode != null" >
+        ts_fresh_mode,
+      </if>
+      <if test="tsFreshNumber != null" >
+        ts_fresh_number,
+      </if>
+      <if test="tsFreshMoney != null" >
+        ts_fresh_money,
+      </if>
+      <if test="tsFreshIntroduce != null" >
+        ts_fresh_introduce,
+      </if>
+      <if test="tsFreshState != null" >
+        ts_fresh_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsFreshId != null" >
+        #{tsFreshId,jdbcType=INTEGER},
+      </if>
+      <if test="tsFreshName != null" >
+        #{tsFreshName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshBrand != null" >
+        #{tsFreshBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshAmount != null" >
+        #{tsFreshAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshPicture != null" >
+        #{tsFreshPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshLand != null" >
+        #{tsFreshLand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshTime != null" >
+        #{tsFreshTime,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshMode != null" >
+        #{tsFreshMode,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshNumber != null" >
+        #{tsFreshNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsFreshMoney != null" >
+        #{tsFreshMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsFreshIntroduce != null" >
+        #{tsFreshIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshState != null" >
+        #{tsFreshState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.TeamshoppingFreshExample" resultType="java.lang.Integer" >
+    select count(*) from teamshopping_fresh
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teamshopping_fresh
+    <set >
+      <if test="record.tsFreshId != null" >
+        ts_fresh_id = #{record.tsFreshId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsFreshName != null" >
+        ts_fresh_name = #{record.tsFreshName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshBrand != null" >
+        ts_fresh_brand = #{record.tsFreshBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshAmount != null" >
+        ts_fresh_amount = #{record.tsFreshAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshPicture != null" >
+        ts_fresh_picture = #{record.tsFreshPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshLand != null" >
+        ts_fresh_land = #{record.tsFreshLand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshTime != null" >
+        ts_fresh_time = #{record.tsFreshTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshMode != null" >
+        ts_fresh_mode = #{record.tsFreshMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshNumber != null" >
+        ts_fresh_number = #{record.tsFreshNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsFreshMoney != null" >
+        ts_fresh_money = #{record.tsFreshMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.tsFreshIntroduce != null" >
+        ts_fresh_introduce = #{record.tsFreshIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsFreshState != null" >
+        ts_fresh_state = #{record.tsFreshState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teamshopping_fresh
+    set ts_fresh_id = #{record.tsFreshId,jdbcType=INTEGER},
+      ts_fresh_name = #{record.tsFreshName,jdbcType=VARCHAR},
+      ts_fresh_brand = #{record.tsFreshBrand,jdbcType=VARCHAR},
+      ts_fresh_amount = #{record.tsFreshAmount,jdbcType=VARCHAR},
+      ts_fresh_picture = #{record.tsFreshPicture,jdbcType=VARCHAR},
+      ts_fresh_land = #{record.tsFreshLand,jdbcType=VARCHAR},
+      ts_fresh_time = #{record.tsFreshTime,jdbcType=VARCHAR},
+      ts_fresh_mode = #{record.tsFreshMode,jdbcType=VARCHAR},
+      ts_fresh_number = #{record.tsFreshNumber,jdbcType=INTEGER},
+      ts_fresh_money = #{record.tsFreshMoney,jdbcType=DOUBLE},
+      ts_fresh_introduce = #{record.tsFreshIntroduce,jdbcType=VARCHAR},
+      ts_fresh_state = #{record.tsFreshState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.TeamshoppingFresh" >
+    update teamshopping_fresh
+    <set >
+      <if test="tsFreshName != null" >
+        ts_fresh_name = #{tsFreshName,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshBrand != null" >
+        ts_fresh_brand = #{tsFreshBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshAmount != null" >
+        ts_fresh_amount = #{tsFreshAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshPicture != null" >
+        ts_fresh_picture = #{tsFreshPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshLand != null" >
+        ts_fresh_land = #{tsFreshLand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshTime != null" >
+        ts_fresh_time = #{tsFreshTime,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshMode != null" >
+        ts_fresh_mode = #{tsFreshMode,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshNumber != null" >
+        ts_fresh_number = #{tsFreshNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsFreshMoney != null" >
+        ts_fresh_money = #{tsFreshMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsFreshIntroduce != null" >
+        ts_fresh_introduce = #{tsFreshIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsFreshState != null" >
+        ts_fresh_state = #{tsFreshState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ts_fresh_id = #{tsFreshId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.TeamshoppingFresh" >
+    update teamshopping_fresh
+    set ts_fresh_name = #{tsFreshName,jdbcType=VARCHAR},
+      ts_fresh_brand = #{tsFreshBrand,jdbcType=VARCHAR},
+      ts_fresh_amount = #{tsFreshAmount,jdbcType=VARCHAR},
+      ts_fresh_picture = #{tsFreshPicture,jdbcType=VARCHAR},
+      ts_fresh_land = #{tsFreshLand,jdbcType=VARCHAR},
+      ts_fresh_time = #{tsFreshTime,jdbcType=VARCHAR},
+      ts_fresh_mode = #{tsFreshMode,jdbcType=VARCHAR},
+      ts_fresh_number = #{tsFreshNumber,jdbcType=INTEGER},
+      ts_fresh_money = #{tsFreshMoney,jdbcType=DOUBLE},
+      ts_fresh_introduce = #{tsFreshIntroduce,jdbcType=VARCHAR},
+      ts_fresh_state = #{tsFreshState,jdbcType=VARCHAR}
+    where ts_fresh_id = #{tsFreshId,jdbcType=INTEGER}
+  </update>
+</mapper>

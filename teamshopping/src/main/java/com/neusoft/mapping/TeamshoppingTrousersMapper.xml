@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingTrousersMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.TeamshoppingTrousers" >
+    <id column="ts_trousers_id" property="tsTrousersId" jdbcType="INTEGER" />
+    <result column="ts_trousers_brand" property="tsTrousersBrand" jdbcType="VARCHAR" />
+    <result column="ts_trousers_type" property="tsTrousersType" jdbcType="VARCHAR" />
+    <result column="ts_trousers_style" property="tsTrousersStyle" jdbcType="VARCHAR" />
+    <result column="ts_trousers_size" property="tsTrousersSize" jdbcType="VARCHAR" />
+    <result column="ts_trousers_color" property="tsTrousersColor" jdbcType="VARCHAR" />
+    <result column="ts_trousers_cloth" property="tsTrousersCloth" jdbcType="VARCHAR" />
+    <result column="ts_trousers_people" property="tsTrousersPeople" jdbcType="VARCHAR" />
+    <result column="ts_trousers_picture" property="tsTrousersPicture" jdbcType="VARCHAR" />
+    <result column="ts_trousers_number" property="tsTrousersNumber" jdbcType="INTEGER" />
+    <result column="ts_trousers_money" property="tsTrousersMoney" jdbcType="DOUBLE" />
+    <result column="ts_trousers_introduce" property="tsTrousersIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_trousers_state" property="tsTrousersState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ts_trousers_id, ts_trousers_brand, ts_trousers_type, ts_trousers_style, ts_trousers_size, 
+    ts_trousers_color, ts_trousers_cloth, ts_trousers_people, ts_trousers_picture, ts_trousers_number, 
+    ts_trousers_money, ts_trousers_introduce, ts_trousers_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.TeamshoppingTrousersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teamshopping_trousers
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teamshopping_trousers
+    where ts_trousers_id = #{tsTrousersId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teamshopping_trousers
+    where ts_trousers_id = #{tsTrousersId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.TeamshoppingTrousersExample" >
+    delete from teamshopping_trousers
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.TeamshoppingTrousers" >
+    insert into teamshopping_trousers (ts_trousers_id, ts_trousers_brand, ts_trousers_type, 
+      ts_trousers_style, ts_trousers_size, ts_trousers_color, 
+      ts_trousers_cloth, ts_trousers_people, ts_trousers_picture, 
+      ts_trousers_number, ts_trousers_money, ts_trousers_introduce, 
+      ts_trousers_state)
+    values (#{tsTrousersId,jdbcType=INTEGER}, #{tsTrousersBrand,jdbcType=VARCHAR}, #{tsTrousersType,jdbcType=VARCHAR}, 
+      #{tsTrousersStyle,jdbcType=VARCHAR}, #{tsTrousersSize,jdbcType=VARCHAR}, #{tsTrousersColor,jdbcType=VARCHAR}, 
+      #{tsTrousersCloth,jdbcType=VARCHAR}, #{tsTrousersPeople,jdbcType=VARCHAR}, #{tsTrousersPicture,jdbcType=VARCHAR}, 
+      #{tsTrousersNumber,jdbcType=INTEGER}, #{tsTrousersMoney,jdbcType=DOUBLE}, #{tsTrousersIntroduce,jdbcType=VARCHAR}, 
+      #{tsTrousersState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.TeamshoppingTrousers" >
+    insert into teamshopping_trousers
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsTrousersId != null" >
+        ts_trousers_id,
+      </if>
+      <if test="tsTrousersBrand != null" >
+        ts_trousers_brand,
+      </if>
+      <if test="tsTrousersType != null" >
+        ts_trousers_type,
+      </if>
+      <if test="tsTrousersStyle != null" >
+        ts_trousers_style,
+      </if>
+      <if test="tsTrousersSize != null" >
+        ts_trousers_size,
+      </if>
+      <if test="tsTrousersColor != null" >
+        ts_trousers_color,
+      </if>
+      <if test="tsTrousersCloth != null" >
+        ts_trousers_cloth,
+      </if>
+      <if test="tsTrousersPeople != null" >
+        ts_trousers_people,
+      </if>
+      <if test="tsTrousersPicture != null" >
+        ts_trousers_picture,
+      </if>
+      <if test="tsTrousersNumber != null" >
+        ts_trousers_number,
+      </if>
+      <if test="tsTrousersMoney != null" >
+        ts_trousers_money,
+      </if>
+      <if test="tsTrousersIntroduce != null" >
+        ts_trousers_introduce,
+      </if>
+      <if test="tsTrousersState != null" >
+        ts_trousers_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsTrousersId != null" >
+        #{tsTrousersId,jdbcType=INTEGER},
+      </if>
+      <if test="tsTrousersBrand != null" >
+        #{tsTrousersBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersType != null" >
+        #{tsTrousersType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersStyle != null" >
+        #{tsTrousersStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersSize != null" >
+        #{tsTrousersSize,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersColor != null" >
+        #{tsTrousersColor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersCloth != null" >
+        #{tsTrousersCloth,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersPeople != null" >
+        #{tsTrousersPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersPicture != null" >
+        #{tsTrousersPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersNumber != null" >
+        #{tsTrousersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsTrousersMoney != null" >
+        #{tsTrousersMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsTrousersIntroduce != null" >
+        #{tsTrousersIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersState != null" >
+        #{tsTrousersState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.TeamshoppingTrousersExample" resultType="java.lang.Integer" >
+    select count(*) from teamshopping_trousers
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teamshopping_trousers
+    <set >
+      <if test="record.tsTrousersId != null" >
+        ts_trousers_id = #{record.tsTrousersId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsTrousersBrand != null" >
+        ts_trousers_brand = #{record.tsTrousersBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersType != null" >
+        ts_trousers_type = #{record.tsTrousersType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersStyle != null" >
+        ts_trousers_style = #{record.tsTrousersStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersSize != null" >
+        ts_trousers_size = #{record.tsTrousersSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersColor != null" >
+        ts_trousers_color = #{record.tsTrousersColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersCloth != null" >
+        ts_trousers_cloth = #{record.tsTrousersCloth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersPeople != null" >
+        ts_trousers_people = #{record.tsTrousersPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersPicture != null" >
+        ts_trousers_picture = #{record.tsTrousersPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersNumber != null" >
+        ts_trousers_number = #{record.tsTrousersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsTrousersMoney != null" >
+        ts_trousers_money = #{record.tsTrousersMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.tsTrousersIntroduce != null" >
+        ts_trousers_introduce = #{record.tsTrousersIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsTrousersState != null" >
+        ts_trousers_state = #{record.tsTrousersState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teamshopping_trousers
+    set ts_trousers_id = #{record.tsTrousersId,jdbcType=INTEGER},
+      ts_trousers_brand = #{record.tsTrousersBrand,jdbcType=VARCHAR},
+      ts_trousers_type = #{record.tsTrousersType,jdbcType=VARCHAR},
+      ts_trousers_style = #{record.tsTrousersStyle,jdbcType=VARCHAR},
+      ts_trousers_size = #{record.tsTrousersSize,jdbcType=VARCHAR},
+      ts_trousers_color = #{record.tsTrousersColor,jdbcType=VARCHAR},
+      ts_trousers_cloth = #{record.tsTrousersCloth,jdbcType=VARCHAR},
+      ts_trousers_people = #{record.tsTrousersPeople,jdbcType=VARCHAR},
+      ts_trousers_picture = #{record.tsTrousersPicture,jdbcType=VARCHAR},
+      ts_trousers_number = #{record.tsTrousersNumber,jdbcType=INTEGER},
+      ts_trousers_money = #{record.tsTrousersMoney,jdbcType=DOUBLE},
+      ts_trousers_introduce = #{record.tsTrousersIntroduce,jdbcType=VARCHAR},
+      ts_trousers_state = #{record.tsTrousersState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.TeamshoppingTrousers" >
+    update teamshopping_trousers
+    <set >
+      <if test="tsTrousersBrand != null" >
+        ts_trousers_brand = #{tsTrousersBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersType != null" >
+        ts_trousers_type = #{tsTrousersType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersStyle != null" >
+        ts_trousers_style = #{tsTrousersStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersSize != null" >
+        ts_trousers_size = #{tsTrousersSize,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersColor != null" >
+        ts_trousers_color = #{tsTrousersColor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersCloth != null" >
+        ts_trousers_cloth = #{tsTrousersCloth,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersPeople != null" >
+        ts_trousers_people = #{tsTrousersPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersPicture != null" >
+        ts_trousers_picture = #{tsTrousersPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersNumber != null" >
+        ts_trousers_number = #{tsTrousersNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsTrousersMoney != null" >
+        ts_trousers_money = #{tsTrousersMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsTrousersIntroduce != null" >
+        ts_trousers_introduce = #{tsTrousersIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsTrousersState != null" >
+        ts_trousers_state = #{tsTrousersState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ts_trousers_id = #{tsTrousersId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.TeamshoppingTrousers" >
+    update teamshopping_trousers
+    set ts_trousers_brand = #{tsTrousersBrand,jdbcType=VARCHAR},
+      ts_trousers_type = #{tsTrousersType,jdbcType=VARCHAR},
+      ts_trousers_style = #{tsTrousersStyle,jdbcType=VARCHAR},
+      ts_trousers_size = #{tsTrousersSize,jdbcType=VARCHAR},
+      ts_trousers_color = #{tsTrousersColor,jdbcType=VARCHAR},
+      ts_trousers_cloth = #{tsTrousersCloth,jdbcType=VARCHAR},
+      ts_trousers_people = #{tsTrousersPeople,jdbcType=VARCHAR},
+      ts_trousers_picture = #{tsTrousersPicture,jdbcType=VARCHAR},
+      ts_trousers_number = #{tsTrousersNumber,jdbcType=INTEGER},
+      ts_trousers_money = #{tsTrousersMoney,jdbcType=DOUBLE},
+      ts_trousers_introduce = #{tsTrousersIntroduce,jdbcType=VARCHAR},
+      ts_trousers_state = #{tsTrousersState,jdbcType=VARCHAR}
+    where ts_trousers_id = #{tsTrousersId,jdbcType=INTEGER}
+  </update>
+</mapper>

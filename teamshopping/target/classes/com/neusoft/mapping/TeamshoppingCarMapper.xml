@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingCarMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.TeamshoppingCar" >
+    <id column="ts_car_id" property="tsCarId" jdbcType="INTEGER" />
+    <result column="ts_car_brand" property="tsCarBrand" jdbcType="VARCHAR" />
+    <result column="ts_car_type" property="tsCarType" jdbcType="VARCHAR" />
+    <result column="ts_car_edition" property="tsCarEdition" jdbcType="VARCHAR" />
+    <result column="ts_car_level" property="tsCarLevel" jdbcType="VARCHAR" />
+    <result column="ts_car_color" property="tsCarColor" jdbcType="VARCHAR" />
+    <result column="ts_car_land" property="tsCarLand" jdbcType="VARCHAR" />
+    <result column="ts_car_displacement" property="tsCarDisplacement" jdbcType="VARCHAR" />
+    <result column="ts_car_power" property="tsCarPower" jdbcType="VARCHAR" />
+    <result column="ts_car_inlet" property="tsCarInlet" jdbcType="VARCHAR" />
+    <result column="ts_car_gearbox" property="tsCarGearbox" jdbcType="VARCHAR" />
+    <result column="ts_car_seat" property="tsCarSeat" jdbcType="INTEGER" />
+    <result column="ts_car_picture" property="tsCarPicture" jdbcType="VARCHAR" />
+    <result column="ts_car_number" property="tsCarNumber" jdbcType="INTEGER" />
+    <result column="ts_car_money" property="tsCarMoney" jdbcType="DOUBLE" />
+    <result column="ts_car_introduce" property="tsCarIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_car_state" property="tsCarState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ts_car_id, ts_car_brand, ts_car_type, ts_car_edition, ts_car_level, ts_car_color, 
+    ts_car_land, ts_car_displacement, ts_car_power, ts_car_inlet, ts_car_gearbox, ts_car_seat, 
+    ts_car_picture, ts_car_number, ts_car_money, ts_car_introduce, ts_car_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.TeamshoppingCarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teamshopping_car
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teamshopping_car
+    where ts_car_id = #{tsCarId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teamshopping_car
+    where ts_car_id = #{tsCarId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.TeamshoppingCarExample" >
+    delete from teamshopping_car
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.TeamshoppingCar" >
+    insert into teamshopping_car (ts_car_id, ts_car_brand, ts_car_type, 
+      ts_car_edition, ts_car_level, ts_car_color, 
+      ts_car_land, ts_car_displacement, ts_car_power, 
+      ts_car_inlet, ts_car_gearbox, ts_car_seat, 
+      ts_car_picture, ts_car_number, ts_car_money, 
+      ts_car_introduce, ts_car_state)
+    values (#{tsCarId,jdbcType=INTEGER}, #{tsCarBrand,jdbcType=VARCHAR}, #{tsCarType,jdbcType=VARCHAR}, 
+      #{tsCarEdition,jdbcType=VARCHAR}, #{tsCarLevel,jdbcType=VARCHAR}, #{tsCarColor,jdbcType=VARCHAR}, 
+      #{tsCarLand,jdbcType=VARCHAR}, #{tsCarDisplacement,jdbcType=VARCHAR}, #{tsCarPower,jdbcType=VARCHAR}, 
+      #{tsCarInlet,jdbcType=VARCHAR}, #{tsCarGearbox,jdbcType=VARCHAR}, #{tsCarSeat,jdbcType=INTEGER}, 
+      #{tsCarPicture,jdbcType=VARCHAR}, #{tsCarNumber,jdbcType=INTEGER}, #{tsCarMoney,jdbcType=DOUBLE}, 
+      #{tsCarIntroduce,jdbcType=VARCHAR}, #{tsCarState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.TeamshoppingCar" >
+    insert into teamshopping_car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tsCarId != null" >
+        ts_car_id,
+      </if>
+      <if test="tsCarBrand != null" >
+        ts_car_brand,
+      </if>
+      <if test="tsCarType != null" >
+        ts_car_type,
+      </if>
+      <if test="tsCarEdition != null" >
+        ts_car_edition,
+      </if>
+      <if test="tsCarLevel != null" >
+        ts_car_level,
+      </if>
+      <if test="tsCarColor != null" >
+        ts_car_color,
+      </if>
+      <if test="tsCarLand != null" >
+        ts_car_land,
+      </if>
+      <if test="tsCarDisplacement != null" >
+        ts_car_displacement,
+      </if>
+      <if test="tsCarPower != null" >
+        ts_car_power,
+      </if>
+      <if test="tsCarInlet != null" >
+        ts_car_inlet,
+      </if>
+      <if test="tsCarGearbox != null" >
+        ts_car_gearbox,
+      </if>
+      <if test="tsCarSeat != null" >
+        ts_car_seat,
+      </if>
+      <if test="tsCarPicture != null" >
+        ts_car_picture,
+      </if>
+      <if test="tsCarNumber != null" >
+        ts_car_number,
+      </if>
+      <if test="tsCarMoney != null" >
+        ts_car_money,
+      </if>
+      <if test="tsCarIntroduce != null" >
+        ts_car_introduce,
+      </if>
+      <if test="tsCarState != null" >
+        ts_car_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tsCarId != null" >
+        #{tsCarId,jdbcType=INTEGER},
+      </if>
+      <if test="tsCarBrand != null" >
+        #{tsCarBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarType != null" >
+        #{tsCarType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarEdition != null" >
+        #{tsCarEdition,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarLevel != null" >
+        #{tsCarLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarColor != null" >
+        #{tsCarColor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarLand != null" >
+        #{tsCarLand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarDisplacement != null" >
+        #{tsCarDisplacement,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarPower != null" >
+        #{tsCarPower,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarInlet != null" >
+        #{tsCarInlet,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarGearbox != null" >
+        #{tsCarGearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarSeat != null" >
+        #{tsCarSeat,jdbcType=INTEGER},
+      </if>
+      <if test="tsCarPicture != null" >
+        #{tsCarPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarNumber != null" >
+        #{tsCarNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsCarMoney != null" >
+        #{tsCarMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsCarIntroduce != null" >
+        #{tsCarIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarState != null" >
+        #{tsCarState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.TeamshoppingCarExample" resultType="java.lang.Integer" >
+    select count(*) from teamshopping_car
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update teamshopping_car
+    <set >
+      <if test="record.tsCarId != null" >
+        ts_car_id = #{record.tsCarId,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsCarBrand != null" >
+        ts_car_brand = #{record.tsCarBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarType != null" >
+        ts_car_type = #{record.tsCarType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarEdition != null" >
+        ts_car_edition = #{record.tsCarEdition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarLevel != null" >
+        ts_car_level = #{record.tsCarLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarColor != null" >
+        ts_car_color = #{record.tsCarColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarLand != null" >
+        ts_car_land = #{record.tsCarLand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarDisplacement != null" >
+        ts_car_displacement = #{record.tsCarDisplacement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarPower != null" >
+        ts_car_power = #{record.tsCarPower,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarInlet != null" >
+        ts_car_inlet = #{record.tsCarInlet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarGearbox != null" >
+        ts_car_gearbox = #{record.tsCarGearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarSeat != null" >
+        ts_car_seat = #{record.tsCarSeat,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsCarPicture != null" >
+        ts_car_picture = #{record.tsCarPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarNumber != null" >
+        ts_car_number = #{record.tsCarNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tsCarMoney != null" >
+        ts_car_money = #{record.tsCarMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.tsCarIntroduce != null" >
+        ts_car_introduce = #{record.tsCarIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tsCarState != null" >
+        ts_car_state = #{record.tsCarState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update teamshopping_car
+    set ts_car_id = #{record.tsCarId,jdbcType=INTEGER},
+      ts_car_brand = #{record.tsCarBrand,jdbcType=VARCHAR},
+      ts_car_type = #{record.tsCarType,jdbcType=VARCHAR},
+      ts_car_edition = #{record.tsCarEdition,jdbcType=VARCHAR},
+      ts_car_level = #{record.tsCarLevel,jdbcType=VARCHAR},
+      ts_car_color = #{record.tsCarColor,jdbcType=VARCHAR},
+      ts_car_land = #{record.tsCarLand,jdbcType=VARCHAR},
+      ts_car_displacement = #{record.tsCarDisplacement,jdbcType=VARCHAR},
+      ts_car_power = #{record.tsCarPower,jdbcType=VARCHAR},
+      ts_car_inlet = #{record.tsCarInlet,jdbcType=VARCHAR},
+      ts_car_gearbox = #{record.tsCarGearbox,jdbcType=VARCHAR},
+      ts_car_seat = #{record.tsCarSeat,jdbcType=INTEGER},
+      ts_car_picture = #{record.tsCarPicture,jdbcType=VARCHAR},
+      ts_car_number = #{record.tsCarNumber,jdbcType=INTEGER},
+      ts_car_money = #{record.tsCarMoney,jdbcType=DOUBLE},
+      ts_car_introduce = #{record.tsCarIntroduce,jdbcType=VARCHAR},
+      ts_car_state = #{record.tsCarState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.TeamshoppingCar" >
+    update teamshopping_car
+    <set >
+      <if test="tsCarBrand != null" >
+        ts_car_brand = #{tsCarBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarType != null" >
+        ts_car_type = #{tsCarType,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarEdition != null" >
+        ts_car_edition = #{tsCarEdition,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarLevel != null" >
+        ts_car_level = #{tsCarLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarColor != null" >
+        ts_car_color = #{tsCarColor,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarLand != null" >
+        ts_car_land = #{tsCarLand,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarDisplacement != null" >
+        ts_car_displacement = #{tsCarDisplacement,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarPower != null" >
+        ts_car_power = #{tsCarPower,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarInlet != null" >
+        ts_car_inlet = #{tsCarInlet,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarGearbox != null" >
+        ts_car_gearbox = #{tsCarGearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarSeat != null" >
+        ts_car_seat = #{tsCarSeat,jdbcType=INTEGER},
+      </if>
+      <if test="tsCarPicture != null" >
+        ts_car_picture = #{tsCarPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarNumber != null" >
+        ts_car_number = #{tsCarNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tsCarMoney != null" >
+        ts_car_money = #{tsCarMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tsCarIntroduce != null" >
+        ts_car_introduce = #{tsCarIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="tsCarState != null" >
+        ts_car_state = #{tsCarState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ts_car_id = #{tsCarId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.TeamshoppingCar" >
+    update teamshopping_car
+    set ts_car_brand = #{tsCarBrand,jdbcType=VARCHAR},
+      ts_car_type = #{tsCarType,jdbcType=VARCHAR},
+      ts_car_edition = #{tsCarEdition,jdbcType=VARCHAR},
+      ts_car_level = #{tsCarLevel,jdbcType=VARCHAR},
+      ts_car_color = #{tsCarColor,jdbcType=VARCHAR},
+      ts_car_land = #{tsCarLand,jdbcType=VARCHAR},
+      ts_car_displacement = #{tsCarDisplacement,jdbcType=VARCHAR},
+      ts_car_power = #{tsCarPower,jdbcType=VARCHAR},
+      ts_car_inlet = #{tsCarInlet,jdbcType=VARCHAR},
+      ts_car_gearbox = #{tsCarGearbox,jdbcType=VARCHAR},
+      ts_car_seat = #{tsCarSeat,jdbcType=INTEGER},
+      ts_car_picture = #{tsCarPicture,jdbcType=VARCHAR},
+      ts_car_number = #{tsCarNumber,jdbcType=INTEGER},
+      ts_car_money = #{tsCarMoney,jdbcType=DOUBLE},
+      ts_car_introduce = #{tsCarIntroduce,jdbcType=VARCHAR},
+      ts_car_state = #{tsCarState,jdbcType=VARCHAR}
+    where ts_car_id = #{tsCarId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.UserAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.bean.UserArea" >
+    <id column="u_area_id" property="uAreaId" jdbcType="INTEGER" />
+    <result column="u_area_name" property="uAreaName" jdbcType="VARCHAR" />
+    <result column="u_area_cid" property="uAreaCid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    u_area_id, u_area_name, u_area_cid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.neusoft.bean.UserAreaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_area
+    where u_area_id = #{uAreaId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_area
+    where u_area_id = #{uAreaId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neusoft.bean.UserAreaExample" >
+    delete from user_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neusoft.bean.UserArea" >
+    insert into user_area (u_area_id, u_area_name, u_area_cid
+      )
+    values (#{uAreaId,jdbcType=INTEGER}, #{uAreaName,jdbcType=VARCHAR}, #{uAreaCid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.neusoft.bean.UserArea" >
+    insert into user_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uAreaId != null" >
+        u_area_id,
+      </if>
+      <if test="uAreaName != null" >
+        u_area_name,
+      </if>
+      <if test="uAreaCid != null" >
+        u_area_cid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uAreaId != null" >
+        #{uAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="uAreaName != null" >
+        #{uAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="uAreaCid != null" >
+        #{uAreaCid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neusoft.bean.UserAreaExample" resultType="java.lang.Integer" >
+    select count(*) from user_area
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_area
+    <set >
+      <if test="record.uAreaId != null" >
+        u_area_id = #{record.uAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uAreaName != null" >
+        u_area_name = #{record.uAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAreaCid != null" >
+        u_area_cid = #{record.uAreaCid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_area
+    set u_area_id = #{record.uAreaId,jdbcType=INTEGER},
+      u_area_name = #{record.uAreaName,jdbcType=VARCHAR},
+      u_area_cid = #{record.uAreaCid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neusoft.bean.UserArea" >
+    update user_area
+    <set >
+      <if test="uAreaName != null" >
+        u_area_name = #{uAreaName,jdbcType=VARCHAR},
+      </if>
+      <if test="uAreaCid != null" >
+        u_area_cid = #{uAreaCid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where u_area_id = #{uAreaId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neusoft.bean.UserArea" >
+    update user_area
+    set u_area_name = #{uAreaName,jdbcType=VARCHAR},
+      u_area_cid = #{uAreaCid,jdbcType=INTEGER}
+    where u_area_id = #{uAreaId,jdbcType=INTEGER}
+  </update>
+</mapper>
