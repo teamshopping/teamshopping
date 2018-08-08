@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.UserIntegralMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.UserIntegral" >
+    <id column="u_integral_id" property="uIntegralId" jdbcType="INTEGER" />
+    <result column="u_integral_name" property="uIntegralName" jdbcType="VARCHAR" />
+    <result column="u_integral_number" property="uIntegralNumber" jdbcType="INTEGER" />
+    <result column="u_integral_state" property="uIntegralState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

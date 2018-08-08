@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingCarMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingCar" >
+    <id column="ts_car_id" property="tsCarId" jdbcType="INTEGER" />
+    <result column="ts_car_brand" property="tsCarBrand" jdbcType="VARCHAR" />
+    <result column="ts_car_type" property="tsCarType" jdbcType="VARCHAR" />
+    <result column="ts_car_edition" property="tsCarEdition" jdbcType="VARCHAR" />
+    <result column="ts_car_level" property="tsCarLevel" jdbcType="VARCHAR" />
+    <result column="ts_car_color" property="tsCarColor" jdbcType="VARCHAR" />
+    <result column="ts_car_land" property="tsCarLand" jdbcType="VARCHAR" />
+    <result column="ts_car_displacement" property="tsCarDisplacement" jdbcType="VARCHAR" />
+    <result column="ts_car_power" property="tsCarPower" jdbcType="VARCHAR" />
+    <result column="ts_car_inlet" property="tsCarInlet" jdbcType="VARCHAR" />
+    <result column="ts_car_gearbox" property="tsCarGearbox" jdbcType="VARCHAR" />
+    <result column="ts_car_seat" property="tsCarSeat" jdbcType="INTEGER" />
+    <result column="ts_car_picture" property="tsCarPicture" jdbcType="VARCHAR" />
+    <result column="ts_car_number" property="tsCarNumber" jdbcType="INTEGER" />
+    <result column="ts_car_money" property="tsCarMoney" jdbcType="DOUBLE" />
+    <result column="ts_car_introduce" property="tsCarIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_car_state" property="tsCarState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

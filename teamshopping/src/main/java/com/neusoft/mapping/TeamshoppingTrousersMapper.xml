@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingTrousersMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingTrousers" >
+    <id column="ts_trousers_id" property="tsTrousersId" jdbcType="INTEGER" />
+    <result column="ts_trousers_brand" property="tsTrousersBrand" jdbcType="VARCHAR" />
+    <result column="ts_trousers_type" property="tsTrousersType" jdbcType="VARCHAR" />
+    <result column="ts_trousers_style" property="tsTrousersStyle" jdbcType="VARCHAR" />
+    <result column="ts_trousers_size" property="tsTrousersSize" jdbcType="VARCHAR" />
+    <result column="ts_trousers_color" property="tsTrousersColor" jdbcType="VARCHAR" />
+    <result column="ts_trousers_cloth" property="tsTrousersCloth" jdbcType="VARCHAR" />
+    <result column="ts_trousers_people" property="tsTrousersPeople" jdbcType="VARCHAR" />
+    <result column="ts_trousers_picture" property="tsTrousersPicture" jdbcType="VARCHAR" />
+    <result column="ts_trousers_number" property="tsTrousersNumber" jdbcType="INTEGER" />
+    <result column="ts_trousers_money" property="tsTrousersMoney" jdbcType="DOUBLE" />
+    <result column="ts_trousers_introduce" property="tsTrousersIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_trousers_state" property="tsTrousersState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

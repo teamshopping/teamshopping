@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingGameMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingGame" >
+    <id column="ts_game_id" property="tsGameId" jdbcType="INTEGER" />
+    <result column="ts_game_name" property="tsGameName" jdbcType="VARCHAR" />
+    <result column="ts_game_type" property="tsGameType" jdbcType="VARCHAR" />
+    <result column="ts_game_edition" property="tsGameEdition" jdbcType="VARCHAR" />
+    <result column="ts_game_company" property="tsGameCompany" jdbcType="VARCHAR" />
+    <result column="ts_game_code" property="tsGameCode" jdbcType="VARCHAR" />
+    <result column="ts_game_currency" property="tsGameCurrency" jdbcType="INTEGER" />
+    <result column="ts_game_picture" property="tsGamePicture" jdbcType="VARCHAR" />
+    <result column="ts_game_number" property="tsGameNumber" jdbcType="INTEGER" />
+    <result column="ts_game_money" property="tsGameMoney" jdbcType="DOUBLE" />
+    <result column="ts_game_introduce" property="tsGameIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_game_state" property="tsGameState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

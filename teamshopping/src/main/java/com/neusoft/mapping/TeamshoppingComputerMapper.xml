@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingComputerMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingComputer" >
+    <id column="ts_computer_id" property="tsComputerId" jdbcType="INTEGER" />
+    <result column="ts_computer_brand" property="tsComputerBrand" jdbcType="VARCHAR" />
+    <result column="ts_computer_model" property="tsComputerModel" jdbcType="VARCHAR" />
+    <result column="ts_computer_type" property="tsComputerType" jdbcType="VARCHAR" />
+    <result column="ts_computer_size" property="tsComputerSize" jdbcType="VARCHAR" />
+    <result column="ts_computer_color" property="tsComputerColor" jdbcType="VARCHAR" />
+    <result column="ts_computer_kernel" property="tsComputerKernel" jdbcType="VARCHAR" />
+    <result column="ts_computer_audio" property="tsComputerAudio" jdbcType="VARCHAR" />
+    <result column="ts_computer_videocard" property="tsComputerVideocard" jdbcType="VARCHAR" />
+    <result column="ts_computer_memory" property="tsComputerMemory" jdbcType="VARCHAR" />
+    <result column="ts_computer_pixel" property="tsComputerPixel" jdbcType="VARCHAR" />
+    <result column="ts_computer_guarantee" property="tsComputerGuarantee" jdbcType="VARCHAR" />
+    <result column="ts_computer_system" property="tsComputerSystem" jdbcType="VARCHAR" />
+    <result column="ts_computer_picture" property="tsComputerPicture" jdbcType="VARCHAR" />
+    <result column="ts_computer_number" property="tsComputerNumber" jdbcType="INTEGER" />
+    <result column="ts_computer_money" property="tsComputerMoney" jdbcType="DOUBLE" />
+    <result column="ts_computer_introduce" property="tsComputerIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_computer_state" property="tsComputerState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingPhoneMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingPhone" >
+    <id column="ts_phone_id" property="tsPhoneId" jdbcType="INTEGER" />
+    <result column="ts_phone_brand" property="tsPhoneBrand" jdbcType="VARCHAR" />
+    <result column="ts_phone_model" property="tsPhoneModel" jdbcType="VARCHAR" />
+    <result column="ts_phone_type" property="tsPhoneType" jdbcType="VARCHAR" />
+    <result column="ts_phone_size" property="tsPhoneSize" jdbcType="VARCHAR" />
+    <result column="ts_phone_color" property="tsPhoneColor" jdbcType="VARCHAR" />
+    <result column="ts_phone_kernel" property="tsPhoneKernel" jdbcType="VARCHAR" />
+    <result column="ts_phone_audio" property="tsPhoneAudio" jdbcType="VARCHAR" />
+    <result column="ts_phone_memory" property="tsPhoneMemory" jdbcType="VARCHAR" />
+    <result column="ts_phone_pixel" property="tsPhonePixel" jdbcType="VARCHAR" />
+    <result column="ts_phone_guarantee" property="tsPhoneGuarantee" jdbcType="VARCHAR" />
+    <result column="ts_phone_system" property="tsPhoneSystem" jdbcType="VARCHAR" />
+    <result column="ts_phone_picture" property="tsPhonePicture" jdbcType="VARCHAR" />
+    <result column="ts_phone_number" property="tsPhoneNumber" jdbcType="INTEGER" />
+    <result column="ts_phone_money" property="tsPhoneMoney" jdbcType="DOUBLE" />
+    <result column="ts_phone_introduce" property="tsPhoneIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_phone_state" property="tsPhoneState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

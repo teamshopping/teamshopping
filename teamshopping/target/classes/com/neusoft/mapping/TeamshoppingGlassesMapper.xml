@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingGlassesMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingGlasses" >
+    <id column="ts_glasses_id" property="tsGlassesId" jdbcType="INTEGER" />
+    <result column="ts_glasses_brand" property="tsGlassesBrand" jdbcType="VARCHAR" />
+    <result column="ts_glasses_type" property="tsGlassesType" jdbcType="VARCHAR" />
+    <result column="ts_glasses_style" property="tsGlassesStyle" jdbcType="VARCHAR" />
+    <result column="ts_glasses_size" property="tsGlassesSize" jdbcType="VARCHAR" />
+    <result column="ts_glasses_color" property="tsGlassesColor" jdbcType="VARCHAR" />
+    <result column="ts_glasses_framematerial" property="tsGlassesFramematerial" jdbcType="VARCHAR" />
+    <result column="ts_glasses_lensmaterial" property="tsGlassesLensmaterial" jdbcType="VARCHAR" />
+    <result column="ts_glasses_picture" property="tsGlassesPicture" jdbcType="VARCHAR" />
+    <result column="ts_glasses_number" property="tsGlassesNumber" jdbcType="INTEGER" />
+    <result column="ts_glasses_money" property="tsGlassesMoney" jdbcType="DOUBLE" />
+    <result column="ts_glasses_introduce" property="tsGlassesIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_glasses_state" property="tsGlassesState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

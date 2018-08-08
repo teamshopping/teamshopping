@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingFreshMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingFresh" >
+    <id column="ts_fresh_id" property="tsFreshId" jdbcType="INTEGER" />
+    <result column="ts_fresh_name" property="tsFreshName" jdbcType="VARCHAR" />
+    <result column="ts_fresh_brand" property="tsFreshBrand" jdbcType="VARCHAR" />
+    <result column="ts_fresh_amount" property="tsFreshAmount" jdbcType="VARCHAR" />
+    <result column="ts_fresh_picture" property="tsFreshPicture" jdbcType="VARCHAR" />
+    <result column="ts_fresh_land" property="tsFreshLand" jdbcType="VARCHAR" />
+    <result column="ts_fresh_time" property="tsFreshTime" jdbcType="VARCHAR" />
+    <result column="ts_fresh_mode" property="tsFreshMode" jdbcType="VARCHAR" />
+    <result column="ts_fresh_number" property="tsFreshNumber" jdbcType="INTEGER" />
+    <result column="ts_fresh_money" property="tsFreshMoney" jdbcType="DOUBLE" />
+    <result column="ts_fresh_introduce" property="tsFreshIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_fresh_state" property="tsFreshState" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

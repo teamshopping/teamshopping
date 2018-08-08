@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamshoppingClothesMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingClothes" >
+    <id column="ts_clothes_id" property="tsClothesId" jdbcType="INTEGER" />
+    <result column="ts_clothes_brand" property="tsClothesBrand" jdbcType="VARCHAR" />
+    <result column="ts_clothes_type" property="tsClothesType" jdbcType="VARCHAR" />
+    <result column="ts_clothes_style" property="tsClothesStyle" jdbcType="VARCHAR" />
+    <result column="ts_clothes_size" property="tsClothesSize" jdbcType="VARCHAR" />
+    <result column="ts_clothes_color" property="tsClothesColor" jdbcType="VARCHAR" />
+    <result column="ts_clothes_cloth" property="tsClothesCloth" jdbcType="VARCHAR" />
+    <result column="ts_clothes_time" property="tsClothesTime" jdbcType="VARCHAR" />
+    <result column="ts_clothes_people" property="tsClothesPeople" jdbcType="VARCHAR" />
+    <result column="ts_clothes_picture" property="tsClothesPicture" jdbcType="VARCHAR" />
+    <result column="ts_clothes_number" property="tsClothesNumber" jdbcType="INTEGER" />
+    <result column="ts_clothes_money" property="tsClothesMoney" jdbcType="DOUBLE" />
+    <result column="ts_clothes_introduce" property="tsClothesIntroduce" jdbcType="VARCHAR" />
+    <result column="ts_clothes_state" property="tsClothesState" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+</mapper>
