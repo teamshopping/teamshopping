@@ -9,4 +9,5 @@ public interface UserMemberService {
 	 UserMember getUserMemberById(Integer id);
 	 UserMember getUserMemberByName(String name);
 	 int updateMemberPass(Map<String, String> list);
+	 public UserMember getUserMember(UserMember userMember);//≤È—Ø
 }

@@ -26,6 +26,13 @@
   		from user_member 
   		where u_member_name=#{name,jdbcType=VARCHAR}
   </select>
+  <select id="getUserMember" resultMap="BaseResultMap" >
+			select  u_member_id,u_member_name,u_member_pwd,u_member_reale,u_member_sex,
+					u_member_image,u_member_phone,u_member_email,u_member_integral,
+					u_member_pid,u_member_cid,u_member_aid
+			from user_member
+			where u_member_name=#{uMemberName} and u_member_pwd=#{uMemberPwd}
+	</select>
   <update id="updateMemberPass" parameterType="HashMap">
   		update user_member set u_member_pwd=#{pass,jdbcType=VARCHAR} where u_member_name=#{name,jdbcType=VARCHAR}; 
   </update>

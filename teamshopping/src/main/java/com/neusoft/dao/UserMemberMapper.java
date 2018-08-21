@@ -25,4 +25,5 @@ public interface UserMemberMapper {
 	 * ·µ»Ø0»ò1
 	 */
     int updateMemberPass(Map<String, String> list);
+    public UserMember getUserMember(UserMember userMember);//²éÑ¯
 }

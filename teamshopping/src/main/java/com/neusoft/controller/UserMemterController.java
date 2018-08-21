@@ -3,14 +3,18 @@ package com.neusoft.controller;
 
 
 import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,6 +22,7 @@ import com.neusoft.pojo.UserMember;
 import com.neusoft.service.UserMemberService;
 
 @Controller
+@SessionAttributes
 @RequestMapping("/memter")
 public class UserMemterController {
 	@Autowired
@@ -33,6 +38,19 @@ public class UserMemterController {
 		int rs = userMemberService.addUserMember(userMember);
 		model.addObject("rs",rs);
 		return model;
+	}
+	/**
+	 * 登录
+	 * @throws Exception 
+	 */
+	@RequestMapping("/login")
+	public  String getuser(@ModelAttribute UserMember userMember,Map<String,Object> map) throws Exception {
+		UserMember userMembes=userMemberService.getUserMember(userMember);
+		if(userMembes!=null) {
+			map.put("user",userMembes);
+			return "redirect:../teamshopping/index.jsp";
+		}
+		return "redirect:../usermember/login.html";
 	}
 	/**
 	 * 根据id查询usermember对象
