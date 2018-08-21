@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.UserMemberMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.UserMember" >
+    <id column="u_member_id" property="uMemberId" jdbcType="INTEGER" />
+    <result column="u_member_name" property="uMemberName" jdbcType="VARCHAR" />
+    <result column="u_member_pwd" property="uMemberPwd" jdbcType="CHAR" />
+    <result column="u_member_reale" property="uMemberReale" jdbcType="VARCHAR" />
+    <result column="u_member_sex" property="uMemberSex" jdbcType="BIT" />
+    <result column="u_member_image" property="uMemberImage" jdbcType="VARCHAR" />
+    <result column="u_member_phone" property="uMemberPhone" jdbcType="INTEGER" />
+    <result column="u_member_email" property="uMemberEmail" jdbcType="CHAR" />
+    <result column="u_member_integral" property="uMemberIntegral" jdbcType="INTEGER" />
+    <result column="u_member_pid" property="uMemberPid" jdbcType="INTEGER" />
+    <result column="u_member_cid" property="uMemberCid" jdbcType="INTEGER" />
+    <result column="u_member_aid" property="uMemberAid" jdbcType="INTEGER" />
+  </resultMap>
+	<insert id="addUserMember" parameterType="UserMember">
+		insert into user_member(u_member_name,u_member_pwd) values (#{uMemberName,jdbcType=VARCHAR},#{uMemberPwd,jdbcType=VARCHAR})
+	</insert>
+  <select id="getUserMemberById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  		select u_member_name,u_member_reale from user_member where u_member_id=#{id,jdbcType=INTEGER}
+  </select>
+  <select id="getUserMemberByName" parameterType="String" resultMap="BaseResultMap">
+  		select u_member_id,u_member_name,u_member_pwd,u_member_reale,u_member_phone,u_member_email 
+  		from user_member 
+  		where u_member_name=#{name,jdbcType=VARCHAR}
+  </select>
+  <update id="updateMemberPass" parameterType="HashMap">
+  		update user_member set u_member_pwd=#{pass,jdbcType=VARCHAR} where u_member_name=#{name,jdbcType=VARCHAR}; 
+  </update>
+</mapper>

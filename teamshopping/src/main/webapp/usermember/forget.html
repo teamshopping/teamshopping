@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>点击忘记密码</title>
+<link rel="stylesheet" media="screen" href="css/forget.css" />
+</head>
+<form id="msform">
+	<!-- progressbar -->
+	<ul id="progressbar">
+		<li class="active">用户名检测</li>
+		<li>手机或邮箱验证</li>
+		<li>新密码输入</li>
+	</ul>
+	<!-- fieldsets -->
+	<fieldset>
+		<h2 class="fs-title">对一步是检测用户名是否存在</h2>
+		<h3 class="fs-subtitle">只用输入用户名</h3>
+		<input type="text" name="name" placeholder="username" />
+		<input type="button" name="nextOne" class="next action-button" value="Next" />
+	</fieldset>
+	<fieldset>
+		<h2 class="fs-title">对二步是通过绑定的手机或邮箱检测</h2>
+		<h3 class="fs-subtitle">输入邮箱或手机</h3>
+		<input type="text" name="bind" placeholder="Emilorphone" />
+		<input type="button" name="nextTwo" class="next action-button" value="Next" />
+	</fieldset>
+	<fieldset>
+		<h2 class="fs-title">第三步输入新密码</h2>
+		<h3 class="fs-subtitle">输入密码</h3>
+		<input type="text" name="pass" placeholder="password"/>
+		<input type="text" name="copypass" placeholder="copypassword" />
+		<input type="button" name="submit" class="next action-button" value="submit" />
+	</fieldset>
+</form>
+<script src="js/jquery-3.3.1.js" type="text/javascript"></script>
+<!-- <script src="js/jQuery.time.js" type="text/javascript"></script> -->
+<script type="text/javascript">
+$("input[name='nextOne']").click(function(){
+	var name = $("input[name='name']").val();
+	if(name!="")
+	{
+	$.ajax({
+	type: "GET",
+	url: "http://localhost:8080/teamshopping/memter/usermembername",
+	data: {"name":name},
+	dataType:"json",
+	success: function(msg)
+	{
+	if (msg=="ok") 
+	{
+	$("input[name='nextOne']").parent().hide();
+	$("input[name='nextOne']").parent().next().show();
+	$("#progressbar li").eq($("fieldset").index(0)).addClass("active");
+	$(".fs-subtitle").text("输入邮箱或手机").css({"text-shadow":"0 0 0 #000","color":"#666"});
+	}
+	else{
+		$(".fs-subtitle").text("用户不存在").css({"text-shadow":"3px 3px 3px #FF0000","color":"red"});
+		}
+	}
+	});
+	}
+	else
+	{
+		$(".fs-subtitle").text("不为空").css({"text-shadow":"3px 3px 3px #FF0000","color":"red"});
+		return false;
+	}	
+	});
+	
+$("input[name='nextTwo']").click(function(){
+	var bind = $("input[name='bind']").val();
+	if(bind!="")
+	{
+	$.ajax({
+	type: "GET",
+	url: "http://localhost:8080/teamshopping/memter/usermemberbind",
+	data: {"bind":bind},
+	dataType:"json",
+	success: function(msg)
+	{
+	if (msg=="ok") 
+	{
+	$("input[name='nextTwo']").parent().hide();
+	$("input[name='nextTwo']").parent().next().show();
+	$("#progressbar li").eq($("fieldset").index(1)).addClass("active");
+	$(".fs-subtitle").text("输入密码").css({"text-shadow":"0 0 0 #000","color":"#666"});
+	}
+	else{
+		$(".fs-subtitle").text("邮箱或手机错误").css({"text-shadow":"3px 3px 3px #FF0000","color":"red"});
+		}
+	}
+	});
+	}
+	else
+	{
+		$(".fs-subtitle").text("不为空").css({"text-shadow":"3px 3px 3px #FF0000","color":"red"});
+		return false;
+	}	
+	});
+	
+$("input[name='submit']").click(function(){
+	var pass = $("input[name='pass']").val();
+	var copypass = $("input[name='copypass']").val();
+	if (pass == "") 
+	{
+		$(".fs-subtitle").text("密码不为空").css({"text-shadow":"3px 3px 3px #FF0000","color":"red"});
+		return false;
+	}
+	else if(copypass == "" || pass != copypass)
+	{
+		$(".fs-subtitle").text("重复密码不为空或两次密码不一样").css({"text-shadow":"3px 3px 3px #FF0000","color":"red"});
+		return false;
+	}
+	else
+	{
+		$(".fs-subtitle").text("输入密码").css({"text-shadow":"0 0 0 #000","color":"#666"});
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/teamshopping/memter/usermemberpass",
+			data: {"pass":pass},
+			dataType:"json",
+			success: function(msg){
+				if(msg=="ok"){
+					window.location.href="http://localhost:8080/teamshopping/index.jsp";
+				}
+			}
+			});
+		}
+	});	
+</script>
+</body>
+</html>
