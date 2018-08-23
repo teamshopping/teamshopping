@@ -14,16 +14,15 @@
 </head>
 <body>
 <div class="content">
-	<div class="left-ul">
+<div class="left-ul">
 		<ul class="nav nav-pills nav-stacked left-li">
-		<li class="active"><a href="#">基本信息</a></li>
+		<li class="active"><a href="personal.jsp">基本信息</a></li>
 		<li><a href="#">我的订单</a></li>
 		<li><a href="#">绑定信息</a></li>
 		<li><a href="address.jsp">配送地址</a></li>
 		</ul>
 	</div>
-	<div class="right-div">
-		
+<div class="right-div">
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -35,14 +34,15 @@
     <c:forEach var="key" items="${usermember.getAddress()}" varStatus="id">
     	<tr>
         <td style="height: 110px;">
-        	<p>${key.getuAddressProvince()} ${key.getuAddressCity()} ${key.getuAddressArea()} ${key.getuAddressDetailed()} </p><span><a>修改</a><a>删除</a></span>
+        	<span>${key.getuAddressProvince()} ${key.getuAddressCity()} ${key.getuAddressArea()} ${key.getuAddressDetailed()}</span>
+        	<span style="margin-left:30px;"><a href="">修改</a><a href="" style="margin-left:10px;">删除</a></span>
         </td>
       </tr>
     </c:forEach>
       
       <tr>
         <td colspan="2" style="height: 110px;">
-       		<span></span><a>新增地址</a> 
+       		<span></span><a href="">新增地址</a> 
         </td>
        </tr> 
        
@@ -54,22 +54,9 @@
 </div>
 </body>
 <script type="text/javascript">
-	
-	$(".left-ul > ul > li:eq(0)").click(function(){
-		$(".left-ul > ul > li").removeClass("active");
-		$(".left-ul > ul > li:eq(0)").addClass("active");
-	});
-	$(".left-ul > ul > li:eq(1)").click(function(){
-		$(".left-ul > ul > li").removeClass("active");
-		$(".left-ul > ul > li:eq(1)").addClass("active");
-	});
-	$(".left-ul > ul > li:eq(2)").click(function(){
-		$(".left-ul > ul > li").removeClass("active");
-		$(".left-ul > ul > li:eq(2)").addClass("active");
-	});
-	$(".left-ul > ul > li:eq(3)").click(function(){
-		$(".left-ul > ul > li").removeClass("active");
-		$(".left-ul > ul > li:eq(3)").addClass("active");
-	});
+$(function(){
+	$(".left-ul > ul > li").removeClass("active");
+	$(".left-ul > ul > li:eq(3)").addClass("active");
+});
 </script>
 </html>

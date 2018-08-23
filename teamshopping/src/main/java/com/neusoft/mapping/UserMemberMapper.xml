@@ -11,7 +11,7 @@
     <result column="u_member_phone" property="uMemberPhone" jdbcType="CHAR" />
     <result column="u_member_email" property="uMemberEmail" jdbcType="CHAR" />
     <result column="u_member_integral" property="uMemberIntegral" jdbcType="INTEGER" />
-    <collection column="{u_member_id=u_member_id}" property="address" select="getAddress" />
+    <collection column="{u_member_id=u_address_mid}" property="address" select="getAddress" />
   </resultMap>
   <resultMap id="UserAddressMap" type="com.neusoft.pojo.UserAddress" >
     <id column="u_address_id" property="uAddressId" jdbcType="INTEGER" />

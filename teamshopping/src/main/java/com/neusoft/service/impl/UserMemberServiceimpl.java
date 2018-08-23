@@ -1,8 +1,6 @@
 package com.neusoft.service.impl;
 
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,16 +51,6 @@ public class UserMemberServiceimpl implements UserMemberService{
 		UserMember usermember= userMemberMapper.login(map);
 		return usermember;
 	}
-	/**
-	 * md5º”√‹
-	 * @throws NoSuchAlgorithmException 
-	 */
-	public String getPwd(String pwd ) throws Exception{
-			MessageDigest md =MessageDigest.getInstance("MD5");
-			byte[] digest=md.digest(pwd.getBytes());
-			String newPwd=new String(digest);
-			return newPwd;
-			
-	}
+	
 
 }

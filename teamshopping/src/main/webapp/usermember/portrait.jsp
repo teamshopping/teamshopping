@@ -26,6 +26,7 @@
 	<div class="right-div">
 		
 <div class="table-responsive">
+<form action="" method="get">
   <table class="table">
     <thead>
       <tr>
@@ -34,32 +35,37 @@
     </thead>
     <tbody>
       <tr>
-        <td colspan="2" style="height: 110px;">
-        	<img alt="" src="<%=usermember.getuMemberImage()%>">
-        </td>
-      </tr>
-      <tr>
         <td>昵称</td>
-        <td><%=usermember.getuMemberName()%></td>
+        <td><input type="text" name="name" value="<%=usermember.getuMemberName()%>"/></td>
        </tr> 
        <tr>
         <td>真是姓名</td>
-        <td><%=usermember.getuMemberReale()%></td>
+        <td><input type="text" name="reale" value="<%=usermember.getuMemberReale()%>"/></td>
        </tr> 
       <tr>
         <td>性别</td>
-        <td><%=usermember.getuMemberSex()%></td>
+        <td>
+        <input type="radio" name="sex" value="0">男
+		<input type="radio" name="sex" value="1">女
+		</td>
       </tr>
       <tr>
-        <td><a href="portrait.jsp">编辑</a></td>
+        <td><input type="submit" value="确定修改"/></td>
       </tr>
     </tbody>
   </table>
+  </form>
 </div>
 </div>
 </div>
 </body>
 <script type="text/javascript">
+ if(<%=usermember.getuMemberSex()%>==1){
+	  $("input[type='radio']:eq(1)").attr("checked","checked");
+   }else{
+	  $("input[type='radio']:eq(0)").attr("checked","checked");
+  }
+
 $(function(){
 	$(".left-ul > ul > li").removeClass("active");
 	$(".left-ul > ul > li:eq(0)").addClass("active");
