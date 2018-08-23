@@ -21,9 +21,13 @@ public interface UserMemberMapper {
 	 */
     UserMember getUserMemberByName(String name);
     /**
+	 * 根据姓名和密码查询usermember
+	 * 返回usermember对象
+	 */
+    UserMember login(Map<String,String> map);
+    /**
 	 * 修改密码
 	 * 返回0或1
 	 */
     int updateMemberPass(Map<String, String> list);
-    public UserMember getUserMember(UserMember userMember);//查询
 }

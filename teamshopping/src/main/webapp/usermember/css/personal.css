@@ -21,7 +21,8 @@
 }
 .table tr{
 	height: 70px;
-	text-align: center; 
+	<!-- text-align: center; -->
+	 
 }
 .table > tbody > tr > td{
 	padding-top: 25px; 

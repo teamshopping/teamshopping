@@ -3,26 +3,22 @@ package com.neusoft.controller;
 
 
 import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neusoft.pojo.UserMember;
 import com.neusoft.service.UserMemberService;
 
 @Controller
-@SessionAttributes
 @RequestMapping("/memter")
 public class UserMemterController {
 	@Autowired
@@ -38,19 +34,6 @@ public class UserMemterController {
 		int rs = userMemberService.addUserMember(userMember);
 		model.addObject("rs",rs);
 		return model;
-	}
-	/**
-	 * 登录
-	 * @throws Exception 
-	 */
-	@RequestMapping("/login")
-	public  String getuser(@ModelAttribute UserMember userMember,Map<String,Object> map) throws Exception {
-		UserMember userMembes=userMemberService.getUserMember(userMember);
-		if(userMembes!=null) {
-			map.put("user",userMembes);
-			return "redirect:../teamshopping/index.jsp";
-		}
-		return "redirect:../usermember/login.html";
 	}
 	/**
 	 * 根据id查询usermember对象
@@ -98,7 +81,7 @@ public class UserMemterController {
 	public @ResponseBody  String userMemberBind(@RequestParam String bind,HttpSession session) throws Exception {
 		ObjectMapper map=new ObjectMapper();
 		UserMember userMember=(UserMember)session.getAttribute("userMember");
-		if(userMember.getuMemberEmail().equals(bind) || userMember.getuMemberPhone()==Integer.parseInt(bind)) 
+		if(userMember.getuMemberEmail().equals(bind) || userMember.getuMemberPhone().equals(bind)) 
 		{
 			String str="ok";
 			String josn=map.writeValueAsString(str);
@@ -129,5 +112,25 @@ public class UserMemterController {
 		String str="ok";
 		String josn=map.writeValueAsString(str);
 		return josn;
+	}
+	/**
+	 * 登陆
+	 */
+	@RequestMapping(value="/login")
+	public String login(@RequestParam String name,@RequestParam String pass,HttpSession session,RedirectAttributes reponse) throws Exception {
+		HashMap<String, String> map=new HashMap<String, String>();
+		map.put("name", name);
+		map.put("pass", pass);
+		UserMember usermember = userMemberService.login(map);
+		if(usermember != null) 
+		{
+			session.setAttribute("usermember", usermember);
+			return "redirect:../teamshopping/index.jsp";
+		}
+		else {
+			reponse.addFlashAttribute("isnull","账号不存在");
+			return "redirect:../usermember/login.html";
+		}
+
 	}
 }

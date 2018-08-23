@@ -1,5 +1,7 @@
 package com.neusoft.pojo;
 
+import java.util.ArrayList;
+
 public class UserMember {
     private Integer uMemberId;
 
@@ -11,7 +13,7 @@ public class UserMember {
 
     private Boolean uMemberSex;
 
-    private Integer uMemberPhone;
+    private String uMemberPhone;
 
     private String uMemberEmail;
 
@@ -24,6 +26,8 @@ public class UserMember {
     private Integer uMemberAid;
 
     private String uMemberImage;
+    
+    private ArrayList<UserAddress> address;
 
     public Integer getuMemberId() {
         return uMemberId;
@@ -65,11 +69,11 @@ public class UserMember {
         this.uMemberSex = uMemberSex;
     }
 
-    public Integer getuMemberPhone() {
+    public String getuMemberPhone() {
         return uMemberPhone;
     }
 
-    public void setuMemberPhone(Integer uMemberPhone) {
+    public void setuMemberPhone(String uMemberPhone) {
         this.uMemberPhone = uMemberPhone;
     }
 
@@ -120,4 +124,18 @@ public class UserMember {
     public void setuMemberImage(String uMemberImage) {
         this.uMemberImage = uMemberImage;
     }
+
+	public ArrayList<UserAddress> getAddress() {
+		return address;
+	}
+
+	public void setAddress(ArrayList<UserAddress> address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "UserMember [address=" + address + "]";
+	}
+
 }

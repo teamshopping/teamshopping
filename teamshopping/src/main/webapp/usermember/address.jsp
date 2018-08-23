@@ -1,6 +1,8 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.neusoft.pojo.UserMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,14 +12,11 @@
 	<script src="js/jquery-3.3.1.js"></script>
   	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
-<%
-	UserMember usermember=(UserMember)session.getAttribute("usermember");
-%>
 <body>
 <div class="content">
 	<div class="left-ul">
 		<ul class="nav nav-pills nav-stacked left-li">
-		<li class="active"><a href="personal.jsp">基本信息</a></li>
+		<li class="active"><a href="#">基本信息</a></li>
 		<li><a href="#">我的订单</a></li>
 		<li><a href="#">绑定信息</a></li>
 		<li><a href="address.jsp">配送地址</a></li>
@@ -33,23 +32,21 @@
     </tr>
     </thead>
     <tbody>
-      <tr>
-        <td colspan="2" style="height: 110px;">
-        	<img alt="" src="<%=usermember.getuMemberImage()%>">
+    <c:forEach var="key" items="${usermember.getAddress()}" varStatus="id">
+    	<tr>
+        <td style="height: 110px;">
+        	<p>${key.getuAddressProvince()} ${key.getuAddressCity()} ${key.getuAddressArea()} ${key.getuAddressDetailed()}</p><span><a>修改</a><a>删除</a></span>
         </td>
       </tr>
+    </c:forEach>
+      
       <tr>
-        <td>昵称</td>
-        <td><%=usermember.getuMemberName()%></td>
+        <td colspan="2" style="height: 110px;">
+       		<span></span><a>新增地址</a> 
+        </td>
        </tr> 
-       <tr>
-        <td>真是姓名</td>
-        <td><%=usermember.getuMemberReale() %></td>
-       </tr> 
-      <tr>
-        <td>性别</td>
-        <td><%=usermember.getuMemberSex() %></td>
-      </tr>
+       
+      
     </tbody>
   </table>
 </div>

@@ -8,32 +8,50 @@
     <result column="u_member_reale" property="uMemberReale" jdbcType="VARCHAR" />
     <result column="u_member_sex" property="uMemberSex" jdbcType="BIT" />
     <result column="u_member_image" property="uMemberImage" jdbcType="VARCHAR" />
-    <result column="u_member_phone" property="uMemberPhone" jdbcType="INTEGER" />
+    <result column="u_member_phone" property="uMemberPhone" jdbcType="CHAR" />
     <result column="u_member_email" property="uMemberEmail" jdbcType="CHAR" />
     <result column="u_member_integral" property="uMemberIntegral" jdbcType="INTEGER" />
-    <result column="u_member_pid" property="uMemberPid" jdbcType="INTEGER" />
-    <result column="u_member_cid" property="uMemberCid" jdbcType="INTEGER" />
-    <result column="u_member_aid" property="uMemberAid" jdbcType="INTEGER" />
+    <collection column="{u_member_id=u_member_id}" property="address" select="getAddress" />
   </resultMap>
+  <resultMap id="UserAddressMap" type="com.neusoft.pojo.UserAddress" >
+    <id column="u_address_id" property="uAddressId" jdbcType="INTEGER" />
+    <result column="u_address_province" property="uAddressProvince" jdbcType="VARCHAR" />
+    <result column="u_address_city" property="uAddressCity" jdbcType="VARCHAR" />
+    <result column="u_address_area" property="uAddressArea" jdbcType="VARCHAR" />
+    <result column="u_address_detailed" property="uAddressDetailed" jdbcType="VARCHAR" />
+    <result column="u_address_mid" property="uAddressMid" jdbcType="INTEGER" />
+  </resultMap>
+  <!-- 添加usermember对象 -->
 	<insert id="addUserMember" parameterType="UserMember">
 		insert into user_member(u_member_name,u_member_pwd) values (#{uMemberName,jdbcType=VARCHAR},#{uMemberPwd,jdbcType=VARCHAR})
 	</insert>
+	<!-- 根据id查询usermember对象 -->
   <select id="getUserMemberById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
   		select u_member_name,u_member_reale from user_member where u_member_id=#{id,jdbcType=INTEGER}
   </select>
+  <!-- 根据用户名查询usermember对象 -->
   <select id="getUserMemberByName" parameterType="String" resultMap="BaseResultMap">
   		select u_member_id,u_member_name,u_member_pwd,u_member_reale,u_member_phone,u_member_email 
   		from user_member 
   		where u_member_name=#{name,jdbcType=VARCHAR}
   </select>
-  <select id="getUserMember" resultMap="BaseResultMap" >
-			select  u_member_id,u_member_name,u_member_pwd,u_member_reale,u_member_sex,
-					u_member_image,u_member_phone,u_member_email,u_member_integral,
-					u_member_pid,u_member_cid,u_member_aid
-			from user_member
-			where u_member_name=#{uMemberName} and u_member_pwd=#{uMemberPwd}
-	</select>
+  <!-- 登陆 -->
+  <select id="login" parameterType="HashMap" resultMap="BaseResultMap">
+  		select u_member_id,u_member_name,u_member_pwd,u_member_reale,u_member_sex,u_member_image,u_member_phone,u_member_email,u_member_integral
+  		from user_member
+  		where u_member_name=#{name,jdbcType=VARCHAR} and u_member_pwd=#{pass,jdbcType=VARCHAR}
+  </select>
+  <select id="getAddress" parameterType="java.util.Map" resultMap="UserAddressMap">
+  		select u_address_id,u_address_province,u_address_city,u_address_area,u_address_detailed,u_address_mid
+  		from user_member,user_address
+  		where u_address_mid = #{u_member_id}
+  </select>
+  <!-- 忘记密码usermember对象 -->
   <update id="updateMemberPass" parameterType="HashMap">
-  		update user_member set u_member_pwd=#{pass,jdbcType=VARCHAR} where u_member_name=#{name,jdbcType=VARCHAR}; 
+  		update user_member 
+  		<set>
+  			<if test="pass != null">u_member_pwd=#{pass,jdbcType=VARCHAR} </if>
+  		</set>
+  		where u_member_name=#{name,jdbcType=VARCHAR}; 
   </update>
 </mapper>
