@@ -11,16 +11,8 @@
     <result column="u_member_phone" property="uMemberPhone" jdbcType="CHAR" />
     <result column="u_member_email" property="uMemberEmail" jdbcType="CHAR" />
     <result column="u_member_integral" property="uMemberIntegral" jdbcType="INTEGER" />
-    <collection column="{u_member_id=u_address_mid}" property="address" select="getAddress" />
   </resultMap>
-  <resultMap id="UserAddressMap" type="com.neusoft.pojo.UserAddress" >
-    <id column="u_address_id" property="uAddressId" jdbcType="INTEGER" />
-    <result column="u_address_province" property="uAddressProvince" jdbcType="VARCHAR" />
-    <result column="u_address_city" property="uAddressCity" jdbcType="VARCHAR" />
-    <result column="u_address_area" property="uAddressArea" jdbcType="VARCHAR" />
-    <result column="u_address_detailed" property="uAddressDetailed" jdbcType="VARCHAR" />
-    <result column="u_address_mid" property="uAddressMid" jdbcType="INTEGER" />
-  </resultMap>
+ 
   <!-- 添加usermember对象 -->
 	<insert id="addUserMember" parameterType="UserMember">
 		insert into user_member(u_member_name,u_member_pwd) values (#{uMemberName,jdbcType=VARCHAR},#{uMemberPwd,jdbcType=VARCHAR})
@@ -35,17 +27,13 @@
   		from user_member 
   		where u_member_name=#{name,jdbcType=VARCHAR}
   </select>
-  <!-- 登陆 -->
+  <!-- 登陆:查询usermember对象 -->
   <select id="login" parameterType="HashMap" resultMap="BaseResultMap">
   		select u_member_id,u_member_name,u_member_pwd,u_member_reale,u_member_sex,u_member_image,u_member_phone,u_member_email,u_member_integral
   		from user_member
   		where u_member_name=#{name,jdbcType=VARCHAR} and u_member_pwd=#{pass,jdbcType=VARCHAR}
   </select>
-  <select id="getAddress" parameterType="java.util.Map" resultMap="UserAddressMap">
-  		select u_address_id,u_address_province,u_address_city,u_address_area,u_address_detailed,u_address_mid
-  		from user_member,user_address
-  		where u_address_mid = #{u_member_id}
-  </select>
+  
   <!-- 忘记密码usermember对象 -->
   <update id="updateMemberPass" parameterType="HashMap">
   		update user_member 

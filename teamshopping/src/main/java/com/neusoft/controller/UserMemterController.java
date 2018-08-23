@@ -2,6 +2,7 @@ package com.neusoft.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.neusoft.pojo.UserAddress;
 import com.neusoft.pojo.UserMember;
+import com.neusoft.service.UserAddressService;
 import com.neusoft.service.UserMemberService;
 
 @Controller
@@ -23,6 +26,9 @@ import com.neusoft.service.UserMemberService;
 public class UserMemterController {
 	@Autowired
 	private UserMemberService userMemberService;
+	
+	@Autowired
+	private UserAddressService userAddressService;
 	/**
 	 * зЂВс userMember
 	 * @param userMember
@@ -122,8 +128,12 @@ public class UserMemterController {
 		map.put("name", name);
 		map.put("pass", pass);
 		UserMember usermember = userMemberService.login(map);
+		
 		if(usermember != null) 
 		{
+			Integer id=usermember.getuMemberId();
+			ArrayList<UserAddress> useraddress=userAddressService.loginAddress(id);
+			usermember.setAddress(useraddress);
 			session.setAttribute("usermember", usermember);
 			return "redirect:../teamshopping/index.jsp";
 		}

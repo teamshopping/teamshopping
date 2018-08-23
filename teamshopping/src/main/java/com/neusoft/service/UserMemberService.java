@@ -1,7 +1,9 @@
 package com.neusoft.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
+import com.neusoft.pojo.UserAddress;
 import com.neusoft.pojo.UserMember;
 
 public interface UserMemberService {

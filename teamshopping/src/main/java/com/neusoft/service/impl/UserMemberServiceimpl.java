@@ -2,7 +2,6 @@ package com.neusoft.service.impl;
 
 
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +44,13 @@ public class UserMemberServiceimpl implements UserMemberService{
 		return rs;
 	}
 	/**
-	 * µÇÂ½
+	 * µÇÂ½£ºusermember¶ÔÏó
 	 */
 	public UserMember login(Map<String, String> map) {
 		UserMember usermember= userMemberMapper.login(map);
 		return usermember;
 	}
+	
 	
 
 }
