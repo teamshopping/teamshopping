@@ -35,7 +35,7 @@
     <c:forEach var="key" items="${usermember.getAddress()}" varStatus="id">
     	<tr>
         <td style="height: 110px;">
-        	<p>${key.getuAddressProvince()} ${key.getuAddressCity()} ${key.getuAddressArea()} ${key.getuAddressDetailed()}</p><span><a>修改</a><a>删除</a></span>
+        	<p>${key.getuAddressProvince()} ${key.getuAddressCity()} ${key.getuAddressArea()} ${key.getuAddressDetailed()} </p><span><a>修改</a><a>删除</a></span>
         </td>
       </tr>
     </c:forEach>
