@@ -6,5 +6,8 @@
     <result column="u_city_name" property="uCityName" jdbcType="VARCHAR" />
     <result column="u_city_pid" property="uCityPid" jdbcType="INTEGER" />
   </resultMap>
-  
+  <select id="getUserCity" resultMap="BaseResultMap">
+  		select u_city_id,u_city_name,u_city_pid
+  		from user_city
+  </select>
 </mapper>

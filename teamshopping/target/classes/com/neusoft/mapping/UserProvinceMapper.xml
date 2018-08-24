@@ -6,8 +6,9 @@
     <result column="u_province_name" property="uProvinceName" jdbcType="VARCHAR" />
   </resultMap>
   <select id="getUserProvince" resultType="UserProvince">
-		select u_province_id,u_province_name from user_province
-	</select>
+		select u_province_id as uProvinceId,u_province_name as uProvinceName
+		 from user_province
+  </select>
 
 	<select id="getCount" resultType="int">
 	  select count(1) from user_province

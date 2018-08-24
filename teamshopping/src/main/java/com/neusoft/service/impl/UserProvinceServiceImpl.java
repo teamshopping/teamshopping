@@ -12,7 +12,7 @@ import com.neusoft.pojo.Pager;
 import com.neusoft.pojo.UserProvince;
 import com.neusoft.service.UserProvinceService;
 
-@Service("currencyPageService")
+@Service("userProvinceService")
 public class UserProvinceServiceImpl implements UserProvinceService{
 	
 	@Autowired
@@ -31,6 +31,12 @@ public class UserProvinceServiceImpl implements UserProvinceService{
 		//组织通用分类页
 		Pager<UserProvince> pager= new Pager<UserProvince>(pageIndex, pageSize, dataCount, list);
 		return pager;
+	}
+	/**
+	 * 查询所有省
+	 */
+	public List<UserProvince> getUserProvince() {
+		return userProvinceMapper.getUserProvince();
 	}
 
 }

@@ -6,7 +6,10 @@ import java.util.Map;
 import com.neusoft.pojo.UserProvince;
 
 public interface UserProvinceMapper {
-   
+	/**
+	 * 查询所有省
+	 * @return
+	 */
 	List<UserProvince> getUserProvince();
 	/**
 	 * 统计记录条数

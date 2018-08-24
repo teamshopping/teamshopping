@@ -16,6 +16,7 @@ import com.neusoft.service.UserProvinceService;
 public class UserProvinceMapperController {
 	@Autowired
 	private UserProvinceService userProvinceService;
+	
 	@RequestMapping(value = "/list")
 	public ModelAndView get() {
 		ModelAndView model = new ModelAndView("/member/usermember");

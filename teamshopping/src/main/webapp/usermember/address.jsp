@@ -42,7 +42,7 @@
       
       <tr>
         <td colspan="2" style="height: 110px;">
-       		<span></span><a href="">新增地址</a> 
+       		<span></span><a href="addAddress.jsp">新增地址</a> 
         </td>
        </tr> 
        

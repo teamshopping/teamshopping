@@ -4,22 +4,32 @@ package com.neusoft.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neusoft.pojo.UserAddress;
+import com.neusoft.pojo.UserArea;
+import com.neusoft.pojo.UserCity;
 import com.neusoft.pojo.UserMember;
+import com.neusoft.pojo.UserProvince;
 import com.neusoft.service.UserAddressService;
+import com.neusoft.service.UserAreaService;
+import com.neusoft.service.UserCityService;
 import com.neusoft.service.UserMemberService;
+import com.neusoft.service.UserProvinceService;
 
 @Controller
 @RequestMapping("/memter")
@@ -29,6 +39,15 @@ public class UserMemterController {
 	
 	@Autowired
 	private UserAddressService userAddressService;
+	
+	@Autowired
+	private UserProvinceService userProvinceService;
+	
+	@Autowired
+	private UserCityService userCityService;
+	
+	@Autowired
+	private UserAreaService userAreaService;
 	/**
 	 * 注册 userMember
 	 * @param userMember
@@ -142,5 +161,23 @@ public class UserMemterController {
 			return "redirect:../usermember/login.html";
 		}
 
+	}
+	/**
+	 * 查询所有省市区
+	 * @return 省市区集合
+	 * @throws JsonProcessingException 
+	 */
+	@RequestMapping(value="/getaddress",method={RequestMethod.POST,RequestMethod.GET},produces = "application/json;charset=UTF-8")
+	public @ResponseBody String getaddress() throws JsonProcessingException {
+		List<UserProvince> userprovince=userProvinceService.getUserProvince();
+		List<UserCity> usercity=userCityService.getUserCity();
+		List<UserArea> userarea=userAreaService.getUserArea();
+		HashMap<String,Object> hashmap=new HashMap<String, Object>();
+		hashmap.put("province", userprovince);
+		hashmap.put("city", usercity);
+		hashmap.put("area", userarea);
+		ObjectMapper map=new ObjectMapper();
+		String json=map.writeValueAsString(hashmap);
+		return json;
 	}
 }

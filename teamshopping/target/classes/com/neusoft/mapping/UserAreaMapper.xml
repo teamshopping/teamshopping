@@ -6,5 +6,8 @@
     <result column="u_area_name" property="uAreaName" jdbcType="VARCHAR" />
     <result column="u_area_cid" property="uAreaCid" jdbcType="INTEGER" />
   </resultMap>
- 
+ 	<select id="getUserArea" resultMap="BaseResultMap">
+ 		select u_area_id,u_area_name,u_area_cid
+ 		from user_area
+ 	</select>
 </mapper>

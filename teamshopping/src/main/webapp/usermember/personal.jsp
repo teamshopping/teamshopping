@@ -12,6 +12,7 @@
 </head>
 <%
 	UserMember usermember=(UserMember)session.getAttribute("usermember");
+	
 %>
 <body>
 <div class="content">
