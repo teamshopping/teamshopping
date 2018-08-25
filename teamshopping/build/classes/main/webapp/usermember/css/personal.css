@@ -1,0 +1,28 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+.content{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 5%;
+	
+}
+.left-ul{
+	width: 300px;
+	float: left;
+}
+.left-li li{
+	margin-bottom: 80px;
+}
+.right-div{
+	width: 680px;
+	margin-left: 330px;
+}
+.table tr{
+	height: 70px;
+	 
+}
+.table > tbody > tr > td{
+	padding-top: 25px; 
+}

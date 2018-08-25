@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.UserConvertibilityMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.UserConvertibility" >
+    <id column="u_convertibility_id" property="uConvertibilityId" jdbcType="INTEGER" />
+    <result column="u_convertibility_name" property="uConvertibilityName" jdbcType="VARCHAR" />
+    <result column="u_convertibility_effect" property="uConvertibilityEffect" jdbcType="VARCHAR" />
+    <result column="u_convertibility_uid" property="uConvertibilityUid" jdbcType="INTEGER" />
+  </resultMap>
+  
+</mapper>

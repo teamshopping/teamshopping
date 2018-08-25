@@ -1,0 +1,19 @@
+@-webkit-keyframes animate-cloud {
+  from {
+    background-position: 600px 100%;
+  }
+  to {
+    background-position: 0 100%;
+  }
+}
+html{
+	height: 100%;
+}
+body{
+  background:url(../img/cloud.jpg) 0 bottom repeat-x  #049ec4;
+  /*定义一个播放动画，播放速度一直一样，linear；无数次播放 infinite*/
+  -webkit-animation: animate-cloud 20s linear infinite;
+  animation: animate-cloud 20s linear infinite;
+  width: 100%;
+  height: auto;
+}

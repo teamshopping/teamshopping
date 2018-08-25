@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.UserLuckdrawMapper" >
+  <resultMap id="BaseResultMap" type="com.neusoft.pojo.UserLuckdraw" >
+    <id column="u_luckdraw_id" property="uLuckdrawId" jdbcType="INTEGER" />
+    <result column="u_luckdraw_mid" property="uLuckdrawMid" jdbcType="INTEGER" />
+    <result column="u_luckdraw_pid" property="uLuckdrawPid" jdbcType="INTEGER" />
+  </resultMap>
+  
+</mapper>
