@@ -5,5 +5,7 @@ import java.util.List;
 import com.neusoft.pojo.UserArea;
 
 public interface UserAreaMapper {
-    List<UserArea> getUserArea();
+
+	List<UserArea> getUserArea();
+    
 }
