@@ -10,5 +10,17 @@
     <result column="picture" property="picture" jdbcType="VARCHAR" />
     <result column="introduce" property="introduce" jdbcType="VARCHAR" />
   </resultMap>
-
+	<select id="getCount" parameterType="java.lang.Integer" resultType="int">
+	  select count(1)
+	  from teamshopping_goods
+	  where type=#{type,jdbcType=INTEGER}
+	</select>
+	<select id="getShoppingByWhere" parameterType="java.util.Map" resultType="TeamshoppingGoods">
+	  select id,type,number,money,state,picture,introduce 
+	  from teamshopping_goods
+	  where type=#{type,jdbcType=INTEGER}
+	  order by id
+	  limit #{stratIndex},#{pageSize}
+	</select>
+	
 </mapper>

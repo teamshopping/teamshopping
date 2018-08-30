@@ -1,13 +1,9 @@
-package com.neusoft.dao;
+package com.neusoft.service;
 
 import java.util.ArrayList;
 
 import com.neusoft.pojo.TeamshoppingType;
 
-public interface TeamBuyTypeMapper {
-	/**
-	 * 获得所有分类
-	 * @return
-	 */
+public interface ShoppingTypeService {
 	public ArrayList<TeamshoppingType> getAllType();
 }

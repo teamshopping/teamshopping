@@ -10,8 +10,8 @@ label.ui-green input { background:#68a54c; }
 label.ui-blue { background:#8a9cc2; border:1px solid #29447e; }
 label.ui-blue input { background:#5e77aa; }
 ul { list-style:none; }
-a:link, a:visited { color:#FF3E89; text-decoration:none; }
-a:hover, a:active { color:#3a52a8; text-decoration:none; }
+a:link, a:visited { color:#3a52a8; text-decoration:none; }
+a:hover, a:active { color:#3a52a8; text-decoration:underline; }
 .bold { font-weight:bold; }
 .hide { display:none; }
 .show { display:block; }
@@ -33,7 +33,7 @@ a:hover, a:active { color:#3a52a8; text-decoration:none; }
 .wrap { width:960px; margin:0 auto; }
 #header { overflow:hidden; padding-top:10px; }
 #header #logo { float:left; width:120px; text-align:center; }
-#header .help { float:right; margin-top: 5px;}
+#header .help { float:right; }
 #header .help a { margin:0 5px; }
 #header .help a.shopping { padding-left:18px; background:url(../images/bg.png) left -69px no-repeat; }
 #header .navbar { padding-left:120px; margin-top:30px; }
@@ -41,7 +41,7 @@ a:hover, a:active { color:#3a52a8; text-decoration:none; }
 #header .navbar li a { display:block; word-spacing:5px; letter-spacing:5px; background:url(../images/bg.png) left -30px no-repeat; padding-left:20px; padding-top:4px; line-height:26px; font-size:14px; font-weight:bold; color:#105f4b; text-decoration:none; }
 #header .navbar li.current { background-position:right top; padding-right:15px; }
 #header .navbar li.current a { background-position:left top; color:#fff; padding-left:15px; }
-#childNav { clear:both; height:30px; background:#fc7e31; overflow:hidden; margin-top: 3px;}
+#childNav { clear:both; height:30px; background:#fc7e31; overflow:hidden; }
 #childNav ul { margin:9px; line-height:14px; }
 #childNav ul li { float:left; display:inline; border-right:1px solid #dc6b04; border-left:1px solid #fba455; padding:0 9px; }
 #childNav ul li a { color:#fff; text-decoration:none; }

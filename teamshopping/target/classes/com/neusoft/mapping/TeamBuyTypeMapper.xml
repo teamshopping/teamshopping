@@ -5,5 +5,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="typename" property="typename" jdbcType="VARCHAR" />
   </resultMap>
-
+<select id="getAllType" resultMap="BaseResultMap">
+	select id,typename
+	from teamshopping_type
+</select>
 </mapper>

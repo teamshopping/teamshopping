@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>团购网 - 首页</title>
 <link type="text/css" rel="stylesheet" href="css/style.css" />
+<script src="js/jquery-3.3.1.js"></script>
 </head>
 <body>
 <jsp:include page="top.jsp" flush="true"></jsp:include>
@@ -17,35 +18,21 @@
 	</div>
 </div>
 <div id="main" class="wrap">
-	<div class="lefter">
-		<div class="box">
-			<h2>电子分类</h2>
-			<dl>
-				<dd><a href="list/jacket-list.jsp">笔记本电脑</a></dd>
-				<dd><a href="list/trousers-list.jsp">台式电脑</a></dd>
-				<dd><a href="list/beauty-list.jsp">平板</a></dd>
-				<dd><a href="list/fresh-list.jsp">手机</a></dd>
-				<dd><a href="list/food-list.jsp">照相机</a></dd>
-				<dd><a href="list/books-list.jsp">智能空调</a></dd>
-			</dl>
-		</div>
-		<div class="spacer"></div>
-		
-	</div>
+	<jsp:include page="left-nav.jsp"></jsp:include>
 	<div class="main">
 		<div class="price-off">
 			<h2>今日特价</h2>
 			<ul class="product clearfix">
 				<li>
 					<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="images/product/1.jpg" /></a></dt>
+						<dt><a href="product-view.html" target="_blank"><img src="images/computer/computer06.jpg" /></a></dt>
 						<dd class="title"><a href="product-view.html" target="_blank">法国德菲丝松露精品巧克力500g/盒</a></dd>
 						<dd class="price">￥108.0</dd>
 					</dl>
 				</li>
 				<li>
 					<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="images/product/2.jpg" /></a></dt>
+						<dt><a href="product-view.html" target="_blank"><img src="images/computer/computer10.jpg" /></a></dt>
 						<dd class="title"><a href="product-view.html" target="_blank">乐扣普通型保鲜盒圣诞7件套</a></dd>
 						<dd class="price">￥69.90</dd>
 					</dl>
@@ -218,4 +205,7 @@
 	Copyright &copy;  团购网站
 </div>
 </body>
+<script type="text/javascript">
+
+</script>
 </html>

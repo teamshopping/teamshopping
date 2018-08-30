@@ -25,12 +25,12 @@ public class UserProvinceMapperController {
 		return model;
 	}
 	
-	@RequestMapping(value="/Pager/{pageSize}/{pageIndex}")
-	public ModelAndView getPager(@PathVariable("pageSize") int pageSize, @PathVariable("pageIndex") int pageIndex) {
-		ModelAndView model = new ModelAndView("member/list");
-		Pager<UserProvince> pager = userProvinceService.getPager(pageIndex, pageSize);
-		model.addObject("pager", pager);
-		return model;
-		
-	}
+//	@RequestMapping(value="/Pager/{pageSize}/{pageIndex}")
+//	public ModelAndView getPager(@PathVariable("pageSize") int pageSize, @PathVariable("pageIndex") int pageIndex) {
+//		ModelAndView model = new ModelAndView("member/list");
+//		Pager<UserProvince> pager = userProvinceService.getPager(pageIndex, pageSize);
+//		model.addObject("pager", pager);
+//		return model;
+//		
+//	}
 }

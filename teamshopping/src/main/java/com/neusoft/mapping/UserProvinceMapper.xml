@@ -9,15 +9,4 @@
 		select u_province_id as uProvinceId,u_province_name as uProvinceName
 		 from user_province
   </select>
-
-	<select id="getCount" resultType="int">
-	  select count(1) from user_province
-	</select>
-	
-	<select id="getUserProvinceByWhere" parameterType="java.util.Map" resultType="UserProvince">
-	  select u_province_id as uProvinceId,u_province_name as uProvinceName 
-	  from user_province
-	  order by u_province_id
-	  limit #{stratIndex},#{pageSize}
-	</select>
 </mapper>
