@@ -5,5 +5,6 @@ import com.neusoft.pojo.TeamshoppingGoods;
 
 
 public interface ShoppingGoodsService {
-	Pager<TeamshoppingGoods> getPager(int type,int pageIndex, int pageSize);
+	public TeamshoppingGoods getGoodsbyId(int id);
+	public Pager<TeamshoppingGoods> getPager(int type,int pageIndex, int pageSize);
 }

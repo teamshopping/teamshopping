@@ -94,7 +94,7 @@
 	<!-- 拦截链 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/userProvince/*" />
+			<mvc:mapping path="/shopping/protuct" />
 			<bean class="com.neuspft.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors> 

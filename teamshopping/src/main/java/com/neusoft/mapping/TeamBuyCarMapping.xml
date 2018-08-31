@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neusoft.dao.TeamBuyCarMapper" >
+	<resultMap id="BaseResultMap" type="com.neusoft.pojo.TeamshoppingBuyCar" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="commodity" property="commodity" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="u_id" property="uid" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="intoCommodity" parameterType="com.neusoft.pojo.TeamshoppingBuyCar">
+  		insert into user_buycar(commodity,number,price,u_id) 
+  		value(#{commodity,jdbcType=VARCHAR},#{number},#{price},#{uid})
+  </insert>
+  <select id="allCommodity" resultMap="BaseResultMap">
+  		select id,commodity,number,price,u_id
+  		from user_buycar
+  </select>
+</mapper>

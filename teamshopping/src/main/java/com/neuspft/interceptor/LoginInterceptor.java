@@ -36,8 +36,8 @@ public class LoginInterceptor implements HandlerInterceptor {
   
 		HttpSession session = arg0.getSession();
 		
-		if (session.getAttribute("user") == null) {
-			arg1.sendRedirect("../usermember/login.jsp");
+		if (session.getAttribute("usermember") == null) {
+			arg1.sendRedirect("http://localhost:8080/teamshopping/usermember/login.html");
 			return false;
 		}
 		return true;

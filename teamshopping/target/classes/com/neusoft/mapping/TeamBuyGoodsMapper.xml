@@ -10,6 +10,11 @@
     <result column="picture" property="picture" jdbcType="VARCHAR" />
     <result column="introduce" property="introduce" jdbcType="VARCHAR" />
   </resultMap>
+  <select id="getGoodsbyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	  select id,type,number,money,state,picture,introduce 
+	  from teamshopping_goods
+	  where id=#{id,jdbcType=INTEGER}
+  </select>
 	<select id="getCount" parameterType="java.lang.Integer" resultType="int">
 	  select count(1)
 	  from teamshopping_goods

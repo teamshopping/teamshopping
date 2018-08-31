@@ -1,18 +1,16 @@
-<%@page import="com.neusoft.pojo.TeamshoppingGoods"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>易买网 - 首页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商品</title>
 <link href="<%=request.getContextPath()%>/teamshopping/css/style.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript"  language="javascript" src="<%=request.getContextPath()%>/teamshopping/js/jquery-3.3.1.js"></script>
 </head>
 <body>
-<jsp:include page="top.jsp"></jsp:include>
 <div id="header" class="wrap">
+	<jsp:include page="top.jsp"></jsp:include>
 </div>
 <div id="childNav">
 	<div class="wrap">
@@ -31,33 +29,19 @@
 				<dd><a href=""></a></dd>
 			</dl>
 		</div>
-		<div class="spacer"></div>
-		
 	</div>
-	<div class="main">
-		<div class="product-list">
-			<h2>笔记本</h2>
-			<div class="clear"></div>
-			<ul class="product clearfix">
-				<c:forEach var="key" items="${pager.list}" varStatus="id">
-    			<li>
-        			<dl>
-        				<dt><a href="http://localhost:8080/teamshopping/shopping/protuct?id=${key.id }" target="_blank"><img src="${key.picture }" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">${key.introduce }</a></dd>
-						<dd class="price">${key.money }</dd>
-        			</dl>
-      			</li>
-    			</c:forEach>
-				
-			</ul>
-			<div class="clear"></div>
-			<div class="pager">
-				<ul class="clearfix">
-					<c:forEach begin="1" end="${pager.pageCount }" varStatus="obj">
-	 					<li><a href="${pageContext.request.contextPath }/shopping/type/${pager.pageSize }/${obj.index }?type=${pager.list[0].type}">${obj.index }</a></li>
-					</c:forEach>
-				</ul>
+	<div id="product" class="main">
+		<h1>${goods.introduce }</h1>
+		<div class="infos">
+			<div class="thumb"><img src="${goods.picture }" /></div>
+			<div class="buy">
+				<p>商城价：<span class="price">${goods.money }</span></p>
+				<p>库　存：${goods.number }</p>
+				<p>状    态：${goods.state  }</p>
+				数量：<input type="text" name="number"/><input type="hidden" name="userid" value="${usermember.uMemberId }"/>
+				<div class="button"><input type="button" name="button" value="购物车" /></div>
 			</div>
+			<div class="clear"></div>
 		</div>
 	</div>
 	<div class="clear"></div>
@@ -68,9 +52,19 @@
 </body>
 <script type="text/javascript">
 $(function() {
-	//$(".single").click(function(){
-	//	window.location.href="login.jsp?id="+;
-	//});
+	$("input[name='button']").click(function(){
+		var uid=$("input[name='userid']").val();
+		var commodity=$("h1").text();
+		var price=$("p:eq(0) > span").text();
+		var number=$("input[name='number']").val();
+		$.ajax({
+			url:"http://localhost:8080/teamshopping/buycar/add",
+			data:{"commodity":commodity,"price":price,"number":number,"uid":uid},
+			contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+			success:function(data){
+			}
+		});
+	});
 	$.ajax({
 		url:"http://localhost:8080/teamshopping/commodity/alltype",
 		dataType:"json",

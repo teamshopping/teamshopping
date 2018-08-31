@@ -33,4 +33,11 @@ public class ShoppingGoodsServiceimpl implements ShoppingGoodsService{
 		Pager<TeamshoppingGoods> pager= new Pager<TeamshoppingGoods>(pageIndex, pageSize, dataCount, list);
 		return pager;
 	}
+	/**
+	 * 根据id查商品对象
+	 */
+	
+	public TeamshoppingGoods getGoodsbyId(int id) {
+		return teamBuyGoodsMapper.getGoodsbyId(id);
+	}
 }

@@ -9,11 +9,15 @@ import com.neusoft.pojo.TeamshoppingGoods;
 
 public interface TeamBuyGoodsMapper {
 	/**
+	 * 根据id查商品对象
+	 */
+	public TeamshoppingGoods getGoodsbyId(Integer id);
+	/**
 	 * 统计记录条数
 	 */
-	int getCount(Integer type);
+	public int getCount(Integer type);
     /**
      * 根据用户条件查询用户类型信息
      * */
-	List<TeamshoppingGoods> getShoppingByWhere(Map<String, Object> where);
+	public List<TeamshoppingGoods> getShoppingByWhere(Map<String, Object> where);
 }

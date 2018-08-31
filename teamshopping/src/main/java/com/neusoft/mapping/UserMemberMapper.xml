@@ -14,7 +14,7 @@
   </resultMap>
  
   <!-- 添加usermember对象 -->
-	<insert id="addUserMember" parameterType="UserMember">
+	<insert id="addUserMember" parameterType="HashMap">
 		insert into user_member(u_member_name,u_member_pwd) values (#{uMemberName,jdbcType=VARCHAR},#{uMemberPwd,jdbcType=VARCHAR})
 	</insert>
 	<!-- 根据id查询usermember对象 -->

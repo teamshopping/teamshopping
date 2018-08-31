@@ -11,7 +11,7 @@
  Target Server Version : 50720
  File Encoding         : 65001
 
- Date: 23/08/2018 11:43:11
+ Date: 31/08/2018 09:52:02
 */
 
 SET NAMES utf8mb4;
@@ -89,9 +89,9 @@ CREATE TABLE `teamshopping_type`  (
 -- ----------------------------
 -- Records of teamshopping_type
 -- ----------------------------
-INSERT INTO `teamshopping_type` VALUES (1, '笔记本');
-INSERT INTO `teamshopping_type` VALUES (2, '台式');
-INSERT INTO `teamshopping_type` VALUES (3, '平板');
+INSERT INTO `teamshopping_type` VALUES (1, '笔记本电脑');
+INSERT INTO `teamshopping_type` VALUES (2, '台式电脑');
+INSERT INTO `teamshopping_type` VALUES (3, '平板电脑');
 INSERT INTO `teamshopping_type` VALUES (4, '手机');
 INSERT INTO `teamshopping_type` VALUES (5, '照相机');
 INSERT INTO `teamshopping_type` VALUES (6, '智能空调');
@@ -115,7 +115,7 @@ CREATE TABLE `user_address`  (
 -- ----------------------------
 -- Records of user_address
 -- ----------------------------
-INSERT INTO `user_address` VALUES (1, '湖北省', '武汉市', '江夏区', '金融港', 1);
+INSERT INTO `user_address` VALUES (1, '湖北省', '武汉市', '江夏区', '金融港', 2);
 
 -- ----------------------------
 -- Table structure for user_administrators
@@ -148,6 +148,25 @@ CREATE TABLE `user_area`  (
 -- Records of user_area
 -- ----------------------------
 INSERT INTO `user_area` VALUES (1, '江夏区', 1);
+
+-- ----------------------------
+-- Table structure for user_buycar
+-- ----------------------------
+DROP TABLE IF EXISTS `user_buycar`;
+CREATE TABLE `user_buycar`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `commodity` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `number` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `u_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_buycar
+-- ----------------------------
+INSERT INTO `user_buycar` VALUES (1, '??DELL???7000 II 14.0????????????(i5-8250U 8G 128GSSD+1T MX150 2G?? IPS)? ', 1, 5399, 1);
+INSERT INTO `user_buycar` VALUES (2, '??(Lenovo)???7000 14?????????????(I7-8550U 8G 2T+128G PCIE R535 2G)??? ', 1, 6099, 1);
 
 -- ----------------------------
 -- Table structure for user_city
@@ -219,12 +238,13 @@ CREATE TABLE `user_member`  (
   `u_member_email` char(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `u_member_integral` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`u_member_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_member
 -- ----------------------------
 INSERT INTO `user_member` VALUES (1, 'zzr123', '123', '沙漠', NULL, 'http://127.0.0.1:8080/teamshopping/usermember/img/portrait01.jpg', '12323155671', '123456@mm.cc', NULL);
+INSERT INTO `user_member` VALUES (2, 'xiaohe', '123456', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user_order
