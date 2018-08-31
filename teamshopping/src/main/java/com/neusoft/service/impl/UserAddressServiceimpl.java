@@ -22,5 +22,8 @@ public class UserAddressServiceimpl implements UserAddressService{
 		ArrayList<UserAddress> useraddress=useraddressMapper.loginAddress(id);
 		return useraddress;
 	}
-
+	public Integer insertAddress(UserAddress userAddress) {
+		
+		return useraddressMapper.insertAddress(userAddress);
+	}
 }

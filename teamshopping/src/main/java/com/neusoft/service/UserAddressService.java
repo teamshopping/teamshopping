@@ -6,4 +6,5 @@ import com.neusoft.pojo.UserAddress;
 
 public interface UserAddressService {
 	 ArrayList<UserAddress> loginAddress(Integer id);
+	 Integer insertAddress(UserAddress userAddress);
 }
