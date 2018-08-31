@@ -15,4 +15,9 @@
   		from  user_address
   		where u_address_mid = #{id,jdbcType=INTEGER}
   </select>
+   <insert id="insertAddress" parameterType="UserAddress">
+  		INSERT INTO user_address(u_address_province,u_address_city,u_address_area,u_address_detailed,u_address_mid)
+		VALUES(#{uAddressProvince,jdbcType=VARCHAR},#{uAddressCity,jdbcType=VARCHAR},#{uAddressArea,jdbcType=VARCHAR},
+				#{uAddressDetailed,jdbcType=VARCHAR},#{uAddressMid,jdbcType=INTEGER})
+  </insert>
 </mapper>

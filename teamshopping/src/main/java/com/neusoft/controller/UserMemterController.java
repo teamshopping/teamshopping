@@ -180,4 +180,37 @@ public class UserMemterController {
 		String json=map.writeValueAsString(hashmap);
 		return json;
 	}
+	/**
+	 * 用户添加地址
+	 */
+	@RequestMapping(value="/addaddress",method={RequestMethod.POST,RequestMethod.GET},produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String addaddress(UserAddress userAddress, HttpSession session,@RequestParam String province,
+				@RequestParam String city,@RequestParam String area,@RequestParam String detailed) {
+		UserMember ua= (UserMember) session.getAttribute("usermember");
+		userAddress.setuAddressMid(ua.getuMemberId());
+		userAddress.setuAddressProvince(province);
+		userAddress.setuAddressCity(city);
+		userAddress.setuAddressArea(area);
+		userAddress.setuAddressDetailed(detailed);
+		Integer user=  userAddressService.insertAddress(userAddress);
+		ObjectMapper mapper=new ObjectMapper();
+		HashMap<String, String> map=new HashMap<String, String>();
+		if(user>0){
+			map.put("status", "true");
+			map.put("msg", "添加成功");
+		}else{
+			map.put("status", "false");
+			map.put("msg", "添加失败");
+			
+		}
+		String sss =null;
+		try {
+			sss = mapper.writeValueAsString(map);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+			return sss;
+	}
+
 }

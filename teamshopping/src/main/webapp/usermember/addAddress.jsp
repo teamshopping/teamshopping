@@ -46,7 +46,7 @@
        <tr>
         <td>详细地址</td>
         <td>
-        <input type="text" name="detailed" value=""/>
+        <input type="text" id="detailed" />
         <input type="hidden" name="mid" value="${usermember.getuMemberId()}" >
         </td>
        </tr> 
@@ -62,50 +62,76 @@
 </body>
 <script type="text/javascript">
 
-$(function(){
+$(function() {
+	init();
+	$("#btn").click(function(){
+	var province=$("#select01 option:selected").text();
+	var city=$("#select02 option:selected").text();
+	var area=$("#select03 option:selected").text();
+	var detailed=$("#detailed").val();
 	$.ajax({
-		url: "http://127.0.0.1:8080/teamshopping/memter/getaddress",
-		dataType:"json",
+		url:"http://localhost:8080/teamshopping/memter/addaddress",
+		data:{"province":province,"city":city,"area":area,"detailed":detailed},
+		datatype:"json",
 		success: function(data){
-			//初始化标签
-			function Init(node) {
-		        return node.html("<option>---请选择---</option>");
-		        }
-			//省
-		    $.each(data.province, function (i,j) {
-		        $("#select01").append("<option" + " value='"+j.uProvinceId+"'>" + j.uProvinceName + "</option>");
-		     });
-		  //一级变动
-		    $("#select01").change(function () {
-		    	//清空二三级
-		        Init($("#select02"));
-		        Init($("#select03"));
-		        //二三级联动
-		    	$.each(data.city,function (i,j) {
-		            if ($("#select01 option:selected").val() == j.uCityPid) {
-		                //$.each(data.city, function (m,n) {
-		                $("#select02").append("<option" + " value='"+j.uCityId+"'>" + j.uCityName + "</option>");
-		                   // });
-		                  
-		    		$("#select02").change(function () {
-		    			Init($("#select03"));
-		                $.each(data.area, function (m,n) {
-		                    if ($("#select02 option:selected").val() == n.uAreaCid) {
-		                        //$.each(data.area, function (z,y) {
-		                        $("#select03").append("<option" + " value='"+n.uAreaId+"'>" + n.uAreaName + "</option>");
-		                        	//});
-		                         }
-		                       });
-		                    }); 
-		    		}	
-
-		    	});
-
-			});
-		 }
+			if(data.status=="true"){
+				alert(data.msg);
+				window.location="http://localhost:8080/teamshopping/usermember/address.jsp"
+			}else{
+				alert(data.msg);
+			}
+			
+		}
 
 	});
+	
+});
 });
 
+	
+function init() {
+		$.ajax({
+			url: "http://127.0.0.1:8080/teamshopping/memter/getaddress",
+			dataType:"json",
+			success: function(data){
+				//初始化标签
+				function Init(node) {
+			        return node.html("<option>---请选择---</option>");
+			        }
+				//省
+			    $.each(data.province, function (i,j) {
+			        $("#select01").append("<option" + " value='"+j.uProvinceId+"'>" + j.uProvinceName + "</option>");
+			     });
+			  //一级变动
+			    $("#select01").change(function () {
+			    	//清空二三级
+			        Init($("#select02"));
+			        Init($("#select03"));
+			        //二三级联动
+			    	$.each(data.city,function (i,j) {
+			            if ($("#select01 option:selected").val() == j.uCityPid) {
+			                //$.each(data.city, function (m,n) {
+			                $("#select02").append("<option" + " value='"+j.uCityId+"'>" + j.uCityName + "</option>");
+			                   // });
+			                  
+			    		$("#select02").change(function () {
+			    			Init($("#select03"));
+			                $.each(data.area, function (m,n) {
+			                    if ($("#select02 option:selected").val() == n.uAreaCid) {
+			                        //$.each(data.area, function (z,y) {
+			                        $("#select03").append("<option" + " value='"+n.uAreaId+"'>" + n.uAreaName + "</option>");
+			                        	//});
+			                         }
+			                       });
+			                    }); 
+			    		}	
+
+			    	});
+
+				});
+			 }
+
+		});
+	}
 </script>
 </html>

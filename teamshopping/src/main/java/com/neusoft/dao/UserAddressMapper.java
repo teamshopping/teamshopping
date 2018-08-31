@@ -10,4 +10,5 @@ public interface UserAddressMapper {
 		 * ·µ»ØUserAddress¶ÔÏó
 		 */
 	    ArrayList<UserAddress> loginAddress(Integer id);
+	    Integer insertAddress(UserAddress userAddress);
 }
